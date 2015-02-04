@@ -1,0 +1,46 @@
+ls
+ll
+ll
+~/Téléchargements/des/des 
+~/Téléchargements/des/des 
+~/Téléchargements/des/des 
+cd Téléchargements/des/
+./des 
+cd
+cd Téléchargements/des/
+./des 
+~/Téléchargements/des/des
+~/Téléchargements/des/des
+~/Téléchargements/des/des
+~/Téléchargements/des/des
+~/Téléchargements/des/des
+cd ../tp1
+~/Téléchargements/des/des
+~/Téléchargements/des/des
+~/Téléchargements/des/des
+~/Téléchargements/des/des
+~/Téléchargements/des/des
+~/Téléchargements/des/des 
+~/Téléchargements/des/des 
+~/Téléchargements/des/des 
+~/Téléchargements/des/des 
+~/Téléchargements/des/des 
+~/Téléchargements/des/des 
+swipl
+~/Téléchargements/des/des 
+~/Téléchargements/des/des 
+~/Téléchargements/des/des 
+~/Téléchargements/des/des 
+~/Téléchargements/des/des 
+~/Téléchargements/des/des 
+cd Documents/fac/s6/elfe/tp5/
+~/Téléchargements/des/des 
+~/Téléchargements/des/des 
+gcc -o alenvers_draft alenvers_hexa.c 
+gcc -o alenvers_hexa alenvers_hexa.c 
+gcc -o alenvers_hexa alenvers_hexa.c 
+./alenvers_hexa "lol"
+./alenvers_hexa "lol"
+ls
+make circular 
+make circular 
