@@ -206,7 +206,6 @@
 (global-set-key (kbd "M-s b") 'comment-box)
 (global-set-key (kbd "M-s j") 'downcase-region)
 (global-set-key (kbd "M-s u") 'upcase-region)
-(global-set-key (kbd "M-s c") 'comment-dwim)
 (global-set-key (kbd "M-s r") 'read-only-mode)
 (global-set-key (kbd "C-d") 'kill-whole-line)
 (global-set-key (kbd "M-s g") 'goto-line)
