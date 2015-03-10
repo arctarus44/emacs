@@ -6,6 +6,7 @@
 (add-to-list 'load-path "/home/arctarus/.emacs.d/elpa/")
 ; Path to emhacks
 (add-to-list 'load-path "/usr/share/emacs/site-lisp/emhacks")
+(add-to-list 'load-path "/home/arctarus/.emacs.d/lisp")
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;; Windowed Conf ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 (when window-system
@@ -28,6 +29,12 @@
   (global-set-key (kbd "C--") 'zoom-out)
   )
 
+(add-hook 'nlinum-mode-hook
+          (lambda ()
+            (setq nlinum--width
+              (length (number-to-string
+                       (count-lines (point-min) (point-max)))))))
+
 ;; Compile
 (byte-recompile-directory (expand-file-name "~/.emacs.d") 0)
 
@@ -35,11 +42,10 @@
 (require 'package)
 (require 'whitespace)
 (require 'cl) ; for line-comment-banner
-
-
-;; Autoload
-(autoload 'line-comment-banner "line-comment-banner" nil t)
-(autoload 'jedi:setup "jedi" nil t)
+(require 'pos-tip)
+(require 'ido)
+;; (require 'undo-tree)
+(global-hl-line-mode 1)
 
 (custom-set-variables
  ;; custom-set-variables was added by Custom.
@@ -52,6 +58,7 @@
  '(column-number-mode t)
  '(delete-selection-mode t)
  '(desktop-save t)
+ '(desktop-save-mode t)
  '(display-battery-mode t)
  '(display-time-24hr-format t)
  '(display-time-default-load-average nil)
@@ -70,7 +77,19 @@
  '(show-paren-mode t)
  '(tabbar-mode t nil (tabbar))
  '(tool-bar-mode nil)
+ '(delete-selection-mode 1)
+ '(transient-mark-mode 1)
  '(whitespace-line-column 80))
+
+;; Autoload
+(autoload 'line-comment-banner "line-comment-banner" nil t)
+(autoload 'jedi:setup "jedi" nil t)
+
+;; Undo-tree-mode
+;; (global-undo-tree-mode)
+
+;; pos-tip
+(setq ac-quick-help-prefer-x t)
 
 ;; fci-mode
 (add-hook 'after-change-major-mode-hook 'fci-mode) ; use fci for every file
@@ -78,9 +97,13 @@
 (setq fci-rule-color "orange")
 
 ;; Jedi
-(setq jedi:setup-keys t)
-(setq jedi:complete-on-dot t)
+(setq jedi:get-in-function-call-delay 250)
 (setq jedi:tooltip-method '(pos-tip))
+(setq jedi:complete-on-dot t)
+(setq jedi:setup-keys t)
+
+;; ido
+(ido-mode t)
 
 ;; Tabbar
 (setq tabbar-buffer-list-function
@@ -149,6 +172,10 @@
 			 ))
 
 (custom-set-faces
+ ;; custom-set-faces was added by Custom.
+ ;; If you edit it by hand, you could mess it up, so be careful.
+ ;; Your init file should contain only one such instance.
+ ;; If there is more than one, they won't work right.
  '(default ((t (:family "Inconsolata" :foundry "unknown" :slant normal :weight normal :height 128 :width normal))))
  '(flymake-errline ((t (:inherit nil :underline (:color "red" :style wave)))))
  '(hl-line ((t (:background "gray15"))))
@@ -183,33 +210,6 @@
  '(whitespace-tab ((t (:foreground "DarkOrange4"))))
  '(whitespace-trailing ((t (:background "gray20" :foreground "gray5")))))
 
-;; Shortcut
-(global-set-key (kbd "C-x C-s") 'delete-trailing-whitespace-and-save)
-(global-set-key (kbd "C-c C-l") 'line-comment-banner)
-(global-set-key (kbd "M-s M-t") 'term)
-(global-set-key [f5] 'tabbar-backward-tab)
-(global-set-key [f6] 'tabbar-forward-tab)
-(global-set-key [f7] 'delete-window)
-(global-set-key [f8] 'split-window-vertically)
-(global-set-key [f9] 'split-window-horizontally)
-(global-set-key [f10] 'other-window)
-(global-set-key [M-up] 'move-text-up)
-(global-set-key [M-down] 'move-text-down)
-(global-set-key [S-f4] 'kill-this-buffer)
-(global-set-key [backtab] 'auto-complete)
-(global-set-key (kbd "M-s t") 'shell)
-(global-set-key (kbd "M-s d") 'desktop-clear)
-(add-hook 'server-switch-hook
-		  (lambda ()
-			(local-set-key [S-f4] 'exit-buffer)))
-(global-set-key (kbd "M-s l") 'line-comment-banner)
-(global-set-key (kbd "M-s b") 'comment-box)
-(global-set-key (kbd "M-s j") 'downcase-region)
-(global-set-key (kbd "M-s u") 'upcase-region)
-(global-set-key (kbd "M-s r") 'read-only-mode)
-(global-set-key (kbd "C-d") 'kill-whole-line)
-(global-set-key (kbd "M-s g") 'goto-line)
-
 ;; System configuration
 (fset 'yes-or-no-p 'y-or-n-p)
 (prefer-coding-system 'utf-8)
@@ -227,6 +227,22 @@
   (delete-trailing-whitespace)
   (save-buffer))
 
+(defun move-line-up ()
+  "Move up the current line."
+  (interactive)
+  (transpose-lines 1)
+  (forward-line -2)
+  (indent-according-to-mode))
+
+(defun move-line-down ()
+  "Move down the current line."
+  (interactive)
+  (forward-line 1)
+  (transpose-lines 1)
+  (forward-line -1)
+  (indent-according-to-mode))
+
+
 (global-set-key (kbd "DEL") 'backward-delete-char)
 (setq c-backspace-function 'backward-delete-char)
 
@@ -237,3 +253,38 @@
 (setq-default c-basic-offset 4
 tab-width 4
 indent-tabs-mode t)
+;; line comment banner for C mode
+(add-hook 'c-mode-common-hook
+		  (lambda () (make-local-variable 'comment-fill)
+			(setq comment-fill "*")))
+
+
+;; Shortcut
+(global-set-key (kbd "C-x C-s") 'delete-trailing-whitespace-and-save)
+(global-set-key (kbd "C-c C-l") 'line-comment-banner)
+(global-set-key (kbd "M-s M-t") 'term)
+(global-set-key [f5] 'tabbar-backward-tab)
+(global-set-key [f6] 'tabbar-forward-tab)
+(global-set-key [f7] 'delete-window)
+(global-set-key [f8] 'split-window-vertically)
+(global-set-key [f9] 'split-window-horizontally)
+(global-set-key [f10] 'other-window)
+(global-set-key [M-up] 'move-text-up)
+(global-set-key [M-down] 'move-text-down)
+(global-set-key [S-f4] 'kill-this-buffer)
+(global-set-key [backtab] 'auto-complete)
+(global-set-key (kbd "M-s t") 'shell)
+(global-set-key (kbd "M-s d") 'desktop-clear)
+(global-set-key (kbd "M-s c") 'comment-dwim)
+(add-hook 'server-switch-hook
+		  (lambda ()
+			(local-set-key [S-f4] 'exit-buffer)))
+(global-set-key (kbd "M-s l") 'line-comment-banner)
+(global-set-key (kbd "M-s b") 'comment-box)
+(global-set-key (kbd "M-s j") 'downcase-region)
+(global-set-key (kbd "M-s u") 'upcase-region)
+(global-set-key (kbd "M-s r") 'read-only-mode)
+(global-set-key (kbd "C-d") 'kill-whole-line)
+(global-set-key (kbd "M-s g") 'goto-line)
+(global-set-key [(meta up)]  'move-line-up)
+(global-set-key [(meta down)]  'move-line-down)
