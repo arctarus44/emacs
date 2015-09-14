@@ -4,8 +4,6 @@
 ;; Path management
 ; elpa
 (add-to-list 'load-path "/home/arctarus/.emacs.d/elpa/")
-; Path to emhacks
-(add-to-list 'load-path "/usr/share/emacs/site-lisp/emhacks")
 (add-to-list 'load-path "/home/arctarus/.emacs.d/lisp")
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;; Windowed Conf ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
@@ -44,7 +42,7 @@
 (require 'cl) ; for line-comment-banner
 (require 'pos-tip)
 (require 'ido)
-;; (require 'undo-tree)
+;(require 'multiple-cursors)
 (global-hl-line-mode 1)
 
 (custom-set-variables
@@ -56,7 +54,7 @@
  '(blink-cursor-blinks 1)
  '(blink-cursor-mode nil)
  '(column-number-mode t)
- '(delete-selection-mode t)
+ '(delete-selection-mode 1)
  '(desktop-save t)
  '(desktop-save-mode t)
  '(display-battery-mode t)
@@ -77,7 +75,6 @@
  '(show-paren-mode t)
  '(tabbar-mode t nil (tabbar))
  '(tool-bar-mode nil)
- '(delete-selection-mode 1)
  '(transient-mark-mode 1)
  '(whitespace-line-column 80))
 
@@ -86,7 +83,7 @@
 (autoload 'jedi:setup "jedi" nil t)
 
 ;; Undo-tree-mode
-;; (global-undo-tree-mode)
+;;(global-undo-tree-mode)
 
 ;; pos-tip
 (setq ac-quick-help-prefer-x t)
@@ -250,14 +247,13 @@
 ; Python mode
 
 ; C -mode
-(setq-default c-basic-offset 4
-tab-width 4
-indent-tabs-mode t)
+;; (setq-default c-basic-offset 4
+;; tab-width 4
+;; indent-tabs-mode t)
 ;; line comment banner for C mode
 (add-hook 'c-mode-common-hook
-		  (lambda () (make-local-variable 'comment-fill)
-			(setq comment-fill "*")))
-
+             (lambda () (make-local-variable 'comment-fill)
+                        (setq comment-fill "*")))
 
 ;; Shortcut
 (global-set-key (kbd "C-x C-s") 'delete-trailing-whitespace-and-save)
@@ -288,3 +284,8 @@ indent-tabs-mode t)
 (global-set-key (kbd "M-s g") 'goto-line)
 (global-set-key [(meta up)]  'move-line-up)
 (global-set-key [(meta down)]  'move-line-down)
+(global-set-key (kbd "C-S-c C-S-c") 'mc/edit-lines)
+(global-set-key (kbd "C->") 'mc/mark-next-like-this)
+(global-set-key (kbd "C-<") 'mc/mark-previous-like-this)
+(global-set-key (kbd "C-c C-<") 'mc/mark-all-like-this)
+(put 'upcase-region 'disabled nil)

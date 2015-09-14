@@ -1,0 +1,197 @@
+;;; -*- coding: utf-8 -*-
+
+;; ----- ido-last-directory-list -----
+(
+ ("/tmp/commons-net-3.3/examples/" . "ftp/")
+ ("/tmp/commons-net-3.3/" . "examples/")
+ ("/home/arctarus/Documents/fac/master/s2/labd/labd-tp7/tp7/" . "exercice-1/")
+ ("/home/arctarus/Documents/fac/master/s2/labd/labd-tp5/" . "exercice2/")
+ ("/home/arctarus/Documents/fac/master/s2/labd/labd-tp5/labd-5/" . "exercice-1/")
+ ("/home/" . "arctarus/")
+ ("/home/arctarus/Documents/fac/master/s2/pji/gnunet-0.10.1/src/" . "dht/")
+ ("/home/arctarus/Documents/fac/master/s2/pji/gnunet-0.10.1/" . "src/")
+ ("/home/arctarus/Documents/fac/master/s2/labd/labd-tp4/" . "labd-4/")
+ ("/home/arctarus/Documents/fac/master/s2/ppd/PPD-TP1/src/" . "mandelbrot/")
+ ("/home/arctarus/Documents/fac/master/s2/ppd/PPD-TP1/" . "src/")
+ ("/home/arctarus/Documents/fac/master/s2/ppd/" . "PPD-TP1/")
+ ("/home/arctarus/Documents/fac/master/s2/pac/pac-tp2/" . "padding-attack/")
+ ("/home/arctarus/Documents/fac/master/s2/pac/" . "pac-tp2/")
+ ("/home/arctarus/Documents/fac/master/s2/pji/" . "gnunet-whanau/")
+ ("/tmp/" . "commons-net-3.3/")
+ ("/" . "tmp/")
+ ("/home/arctarus/Documents/fac/master/s2/ase++/multi_core/" . "etc/")
+ ("/home/arctarus/Documents/fac/master/s2/labd/" . "labd-tp5/")
+ ("/home/arctarus/Documents/fac/master/s2/ase++/" . "multi_core/")
+ ("/home/arctarus/Documents/fac/master/s2/car/" . "CAR-TP2/")
+ ("/home/arctarus/Documents/fac/master/s2/" . "pac/")
+ ("/home/arctarus/Documents/fac/master/" . "s2/")
+ ("/home/arctarus/Documents/fac/" . "master/")
+ ("/home/arctarus/Documents/" . "fac/")
+ ("/home/arctarus/Projets/emacs.t/" . ".emacs.d/")
+ ("/home/arctarus/Projets/" . "emacs.t/")
+ ("/home/arctarus/" . "Documents/")
+)
+
+;; ----- ido-work-directory-list -----
+(
+ "/tmp/"
+ "/tmp/commons-net-3.3/examples/ftp/"
+ "/home/arctarus/Documents/fac/master/s2/pac/pac-tp2/"
+ "/home/arctarus/Documents/fac/master/s2/car/CAR-TP2/"
+ "/home/arctarus/Documents/fac/licence/s4/asd/tp5/"
+ "/home/arctarus/Documents/fac/master/s2/labd/labd-tp7/tp7/exercice-1/"
+ "/home/arctarus/Documents/fac/master/s2/labd/labd-tp5/exercice2/"
+ "/home/arctarus/Documents/fac/master/s2/labd/labd-tp5/labd-5/exercice-1/"
+ "/home/arctarus/Documents/fac/master/s2/labd/labd-tp5/"
+ "/home/arctarus/Documents/fac/master/s2/ase++/multi_core/etc/"
+ "/home/arctarus/"
+ "/home/arctarus/Documents/fac/master/s2/pji/gnunet-0.10.1/src/dht/"
+ "/home/arctarus/Documents/fac/master/s2/pji/gnunet-whanau/"
+ "/home/arctarus/Documents/fac/master/s2/pji/gnunet-0.10.1/src/include/"
+ "/home/arctarus/Documents/fac/master/s2/pji/gnunet-0.10.1/"
+ "/home/arctarus/Documents/fac/master/s2/pac/pac-tp2/padding-attack/"
+ "/home/arctarus/Documents/fac/master/s2/pac/pac-tp2/two-time-pad/"
+ "/home/arctarus/Documents/fac/master/s2/labd/labd-tp2/"
+ "/home/arctarus/Documents/fac/master/s2/labd/labd-tp3/"
+ "/home/arctarus/Documents/fac/master/s2/labd/labd-tp4/labd-4/"
+ "/home/arctarus/Documents/fac/master/s2/labd/labd-tp4/"
+ "/home/arctarus/Documents/fac/master/s2/ppd/PPD-TP1/"
+ "/home/arctarus/Documents/fac/master/s2/ppd/PPD-TP1/src/mandelbrot/"
+ "/home/arctarus/Documents/fac/master/s2/car/CAR-TP1/"
+ "/home/arctarus/Documents/fac/master/s2/ase++/multi_core/"
+ "/home/arctarus/Documents/fac/master/s2/ase++/multi_core/src/"
+ "/tmp/ASE_TP5/"
+ "/home/arctarus/Documents/fac/master/s2/ase++/multi_core/include/"
+ "/home/arctarus/Documents/fac/master/s2/ase++/ase-shell/"
+ "/home/arctarus/Projets/emacs.t/.emacs.d/"
+)
+
+;; ----- ido-work-file-list -----
+(
+ "FTPClientExample.java"
+ "README.md"
+ "listeit.mli"
+ "testtp5.ml"
+ "testtp5"
+ "query_bib7.xq"
+ "artistes-avec-clefs2.xsl"
+ "artistes-avec-clefs.xsl"
+ "ld"
+ "l.txt"
+)
+
+;; ----- ido-dir-file-cache -----
+(
+ ("/home/arctarus/Documents/fac/master/s2/car/CAR-TP2/" (21749 47177 940744 771000) "./" "../" ".gitignore" "README.md" ".git/" ".#README.md" "REST-FTP/" "#README.md#")
+
+ ("/tmp/" (21748 61814 103475 618000) ".XIM-unix/" ".ICE-unix/" ".font-unix/" ".Test-unix/" ".X11-unix/" "systemd-private-b745ad8253c04ef8970da24978993390-systemd-timesyncd.service-ewX3fN/" "hogsuspend" "systemd-private-b745ad8253c04ef8970da24978993390-colord.service-sKKl6I/" "sddm-autheed77d85-7468-42a8-9973-fb5381ac21b8" ".X0-lock" "sddm-:0-RdoBxn" "xauth-995-_0" "xauth-1000-_0" "kde-arctarus/" "plugtmp/" "flashgot.azqir97p.default-1421774065693/" "hsperfdata_arctarus/" "commons-net-3.3-bin.tar.gz" "FTPClientExample.java" "../" "./")
+
+ ("/home/arctarus/" (21748 60097 289158 775000) ".dia/" ".p7zip" "arctrus.key" ".aria2/" ".kodi/" ".texlive/" ".xinitrc" ".mozilla/" ".pgpass" ".xmlcopyeditor" ".frozenbyte/" ".defcon/" ".eclipse/" ".zcompdump-pcp-arctarus-5.0.6" ".bzr.log" ".dbus/" ".me-tv/" ".adobe/" "clean-kdeCache.sh" ".argouml/" "trc_LL.jpg" ".w3m/" ".gnash/" ".zdirs" ".grafx2/" ".steampath" "workspace/" ".tvdownloader/" ".node-gyp/" ".basexgui" ".gnupg/" ".gitconfig" ".gtkrc-2.0-kde4" "Bureau/" ".pythonhist" "ca.crt" ".atom/" ".local/" ".ssh/" ".zcompdump" ".steam/" ".fishBMC-data/" ".thunderbird/" "konsole.kwinrule" ".Skype/" ".pki/" ".ise" ".bash_profile" "nss2011.pdf" ".hades/" ".kde4/" "flashproxy.pdf" ".netx/" ".screen~" "WP_000423.jpg" "soundKonverter/" ".Xauthority" ".distlib/" ".pgadmin3" ".update-notifier/" "Images/" ".pylint.d/" ".rnd" ".python_history" ".modelio/" ".mplayer/" ".macromedia/" ".zsh-update" ".sidhe/" ".idapro/" ".dmrc" ".directory" ".emacs.desktop.lock" ".xchat2/" ".#tmp" "arctarus.zip" ".emacs.d/" ".zshrc~" "client.conf~" "139714416198.gif" ".IdeaIC12/" ".gmrun_history" ".dvdcss/" ".config/" ".sysdb/" ".teeworlds/" ".lyx/" "Public/" ".icedteaplugin/" ".mountlvm" ".gimp-2.8/" ".aqbanking/" ".freeplane/" ".eclim/" ".java/" ".gnuplot_history" ".gtkrc-2.0" ".zshrc.orig" ".fonts/" ".xsession" ".nightingale/" ".pulse/" ".ecb-tip-of-day.el" ".fontconfig/" ".editix/" "jdl/" ".moc/" ".pgadmin_histoqueries" ".languagetool-ooo.cfg" ".swt/" ".thumbnails/" ".xine/" ".icedtea/" ".ibam/" ".qt/" ".histfile" "thunderbird.kwinrule" ".themes/" ".hplip/" ".mono/" "Video/" ".ocaml_history" ".gegl-0.0/" ".psql_history" ".face.icon" ".emacs~" ".cache/" "eclipse.kwinrule" ".zcompdump-pcp-arctarus-5.0.7" ".gdbinit" ".moc-tray" "Rayman_Gold-KORP.7z" ".bogofilter/" ".byobu/" ".zsh_history" ".emacs.desktop" ".easytag/" "Documents/" ".tuxpaint/" ".PyCharm30/" ".mshell_history" ".nv/" "emacs.kwinrule" ".gphoto/" ".recently-used" ".gconf/" "ta.key" ".gstreamer-0.10/" ".dosbox/" ".designer/" ".bashrc" ".ninja_ide/" ".pulse-cookie" ".wireshark/" ".Xilinx/" ".gdmap/" ".android/" "Téléchargements/" ".pyrc" ".fltk/" ".cddb/" ".lesshst" "client.conf" ".speech-dispatcher/" ".basex" ".twotribes/" ".pyrenamer/" ".sudoku/" ".zshrc" ".bash_logout" ".compose-cache/" "#.emacs#" "firefox.kwinrule" ".opennx" ".subversion/" ".cups/" ".nvidia-settings-rc" ".mysql_history" ".bashrc~" "save_kde/" ".bash_history" ".emacs" "FTP.pdf" ".xsession-errors" ".openshot/" ".parallel/" ".sane/" ".esd_auth" "arctrus.crt" "p169-al-ameen.pdf" ".steampid" ".d-feet/" ".xsession-errors-:1" ".oh-my-zsh/" ".mission-control/" ".purple/" ".appletviewer" "Musiques/" "Projets/" ".hadesrc" "transmission.kwinrule" ".fontypython/" ".nx/" ".filezilla/" "Cache/" ".screen" ".gconfd/" ".mostrc" "bootstrap.pdf" "../" "./")
+
+ ("/home/arctarus/Documents/" (21747 37531 798874 557000) ".Trash-1000/" "sem6_17_21" "sem1_12-16" "grille0.8.odt" "revue_doc_+_test_charge.odt" "internet_retour_philosophie.pdf" "Hugo-La_legende_des_siecles.InLibroVeritas.net_oeuvre5301.pdf" "tpcontrole-II488.odt" "attestation_japd.jpg" "societe_du_spectacle.pdf" "geekfast.odt" "bill gates acpi.pdf" "escalade/" "rapport-c-15.odt" "premier-ex-td.odt" "35088715-docprojet-SFH.pdf" "Remarque diverse julien.odt" "./" "pppmetier.pdf" "lettre/" "../" "sem2_19-23" "caliut" "Untitled 1" "Flaubert-Salammbo.InLibroVeritas.net_oeuvre3343.pdf" "road_to_tycho.pdf" "screenshotindex.odt" "pppmetier.odp" "note_sem2.png" "Les Réseaux Locaux d'EntreprisesV1.ppt" "tab_S-STG.arthur.lol.IamBogoss.ods" "lfgn_1.png" "livre/" "abstract_arthur-dewarumez.odt" "Sans nom 1.ods" "escalade-fiche_inscription.pdf" "MumbleAutomaticCertificateBackup.p12" "fac/" "lettre-réclam_lmde.pdf" "note_bac.png" "fiiche_inscription.pdf" "partage_vm/" "soutenance_stage.pdf" "sem3_26-30" "note_sem3.png" "emploie/" "linux.pdf" "geekfast.pdf" "La_societe_du_spectacle.pdf" "dip_bac.png" "migration_openoffice_framabook.pdf" "sem5_10-12" ".directory" "livret_libre_a4_lecture-ed3.pdf" "escalade-fiche_inscription.odt" "questionouvertes.ods" "lego/" "opensource-libre.pdf" "transp_GL1_V_5_0.ppt" "iut/" "abstract_arthur-dewarumez" "note_sem1.png" "origami/" "sem7_25_28" "présentation/" "zenity.pdf" "sem4_3-7" "lettre-réclam_lmde.odt" "manueldecivilite.pdf" "lua/" "nintendo_ds/")
+
+ ("/tmp/commons-net-3.3/examples/ftp/" (21745 44284 395047 11000) "FTPClientExample.java" "ServerToServerFTP.java" "TFTPExample.java" "../" "./")
+
+ ("/tmp/commons-net-3.3/examples/" (21745 44284 398380 382000) "cidr/" "ftp/" "mail/" "nntp/" "ntp/" "telnet/" "unix/" "util/" "Main.java" "../" "./")
+
+ ("/tmp/commons-net-3.3/" (21745 44284 395047 11000) "apidocs/" "examples/" "LICENSE.txt" "NOTICE.txt" "README" "RELEASE-NOTES.txt" "commons-net-3.3.jar" "commons-net-3.3-sources.jar" "commons-net-examples-3.3.jar" "../" "./")
+
+ ("/home/arctarus/Documents/fac/licence/s4/asd/tp3/" (20792 41816 329988 746000) "test.gp" "testtp3.cmo" "Makefile" "testtp3.cmi" "./" "../" "testtp3.ml" "graphique.gp" "README.txt" "testtp3" "q3.png")
+
+ ("/home/arctarus/Documents/fac/licence/s4/asd/tp5/" (21743 30285 865769 260000) "listeit.mli" "Makefile" "./" "../" "tp5.pdf" "listeit.cmi" "testtp5.cmi" "testtp5.cmo" ".directory" "testtp5" "listeit.ml" "listeit.cmo" "README.txt" "testtp5.ml")
+
+ ("/home/arctarus/Documents/fac/master/s2/labd/" (21742 61430 973051 449000) "labd-tp3/" "editix-free-2010/" "./" "../" "labd-tp2/" "labd-tp5/" "labd-tp7/" "labd-tp1/" "labd-tp4/")
+
+ ("/home/arctarus/Documents/fac/master/s2/labd/labd-tp7/" (21742 61427 533033 640000) "tp7.tgz" "./" "../" "README.md" ".git/" "tp7/")
+
+ ("/home/arctarus/Documents/fac/master/s2/labd/labd-tp7/tp7/exercice-1/" (21735 19676 0 0) "query_bib3.xq" "./" "../" "query_bib5.xq" "query_bib6.xq" "query_bib1.xq" "xqueryResult.xml" "query_bib7.xq" "query_bib4.xq" "query_bib2.xq" "biblio.xml")
+
+ ("/home/arctarus/Documents/fac/master/s2/labd/labd-tp7/tp7/" (21735 19954 0 0) "exercice-2/" "saxon9he.jar" "./" "../" "exercice-3/" "exercice-1/")
+
+ ("/home/arctarus/Documents/fac/master/s2/labd/labd-tp7/tp7/exercice-2/" (21735 19676 0 0) "maisons.xml" "./" "../")
+
+ ("/home/arctarus/Documents/fac/master/s2/ase++/ase-shell/" (21738 58574 857346 827000) "frmt.bin" "context.o" "dmps.bin" "dir.o" "lib/" "change_disk.sh" "my_compute.o" "Makefile" "ifile.o" "my_cd.o" "print_mbr.bin" "./" "../" "my_dumps.o" "mkvol.bin" "src/" ".gitignore" "if_dfile.bin" "README.md" "mknfs.bin" ".git/" "create_volume.sh" "etc/" "save_vdiskA.bin" "Copy of if_status (conflict from 02-03-2015 at 18h26).bin" "if_status.bin" "file.o" "my_pwd.o" "hw.o" "init_volume.sh" "tools.o" "vdiskB.bin" "filesystem.o" "dvol.bin" "my_ls.o" "if_cfile.bin" "rvol.bin" "if_pfile.bin" "drive.o" "if_nfile.bin" "my_mkdir.o" "hardware.ini" "shell.bin" "#Makefile#" "vdiskA.bin" "include/" "create-disk.bin" "cmd.o" "volume.o")
+
+ ("/home/arctarus/Documents/fac/master/s2/ase++/multi_core/include/" (21739 779 678069 194000) "super.h" "hardware.h" "context.h" "my_cd.h" "./" "../" "my_mkdir.h" "my_ls.h" "volume.h" "hw_info.h~" "hw_info.h" "dir.h" "mkvol.h" "return_value.h" "ifile.h" "tools.h" "my_pwd.h" "inode.h" "filesystem.h" "my_compute.h" "mbr.h" "file.h" "hw.h" "drive.h" "shell.h" "cmd.h" "my_dumps.h")
+
+ ("/home/arctarus/Documents/fac/master/s2/labd/labd-tp5/exercice2/" (21742 12323 823630 100000) "artistes-avec-clefs.xsl" "catalogue-1.xml" "./" "../" "artistes.xml" "fusion.xsl" "catalogues.xsd" ".#artistes-avec-clefs.xsl" "catalogue-2.xml" "multi-fusion.xsl" "nb_ouvres.xsl" "#artistes-avec-clefs.xsl#" "catalogue.xsd" "catalogues.xml")
+
+ ("/home/arctarus/Documents/fac/master/s2/labd/labd-tp5/labd-5/exercice-1/" (21740 50262 656395 197000) "championnat.xml" "q2.xml" "championnat.xsd" "._q1.xsl" "./" "../" "q4.xml" "q2.xml~" "q3.html" "._championnat.xml" "q6.xml" "q1.xsl" "q5.xml" "q5.xml~")
+
+ ("/home/arctarus/Documents/fac/master/s2/labd/labd-tp5/" (21741 46634 539090 659000) "exercice1/" "exercice2/" "./" "../" ".gitignore" "README.md" ".git/" "labd-5/" "labd-5.tgz")
+
+ ("/tmp/flashgot.azqir97p.default-1421774065693/" (21740 52966 743852 519000) "flashgot.fgt" "flashgot.sh.test" "../" "./")
+
+ ("/tmp/yaourt-tmp-arctarus/" (21738 58268 688136 853000) "../" "./")
+
+ ("/home/arctarus/Documents/fac/master/s2/ase++/multi_core/src/ordonnancement/" (21739 1914 889946 439000) "context.h~" "./" "../" "hw.c" "tp5.c" "prod_con.c" "context.c")
+
+ ("/home/arctarus/Documents/fac/master/s2/ase++/multi_core/" (21739 449 498372 801000) "lib/" "Makefile" "./" "../" "src/" ".gitignore" "README.md" ".git/" "etc/" "Makefile~" "hw.o" "active-core-int.bin" "vdiskB.bin" "vdiskA.bin" "include/")
+
+ ("/home/arctarus/Documents/fac/master/s2/ase++/multi_core/src/" (21738 58963 388152 346000) "ordonnancement/" "test/" "core_test/" "./" "../" "shell/" "disque/" "lock-core.c~" "active-core.c~" "active-core-int.c~")
+
+ ("/home/arctarus/Documents/fac/master/s2/labd/labd-tp5/labd-5/" (21718 6062 0 0) "exercice-2/" "./" "../" "exercice-1/")
+
+ ("/home/arctarus/Documents/fac/master/s2/car/CAR-TP1/" (21734 3341 748675 239000) "./" "../" ".gitignore" "README.md" ".git/" "ftp.png" "FTP/")
+
+ ("/home/arctarus/Documents/fac/master/s2/ppd/PPD-TP1/src/mandelbrot/" (21732 47226 106165 985000) "Makefile" "./" "mandel-par.c" "../" "mandel-petitTravaux.h" "header-seq.h" "mandel-seq.c" "mandel-petitTravaux.c" "header-seq.h~" "header-par.h")
+
+ ("/home/arctarus/Documents/fac/master/s2/ppd/PPD-TP1/" (21732 54727 234548 62000) "launch.sh" "machine.txt" "./" "../" "src/" ".gitignore" "README.md" ".git/")
+
+ ("/home/arctarus/Documents/fac/master/s2/labd/labd-tp4/" (21733 5975 262866 761000) "personnes.xml" "personnes.xsd" "a.xml" "examen-2.xsd" "b.xsd" "./" "../" ".gitignore" "README.md" ".git/" "labd-4.tgz" "labd-4/" "a.xsd" "examen-1.xsd")
+
+ ("/home/arctarus/Documents/fac/master/s2/labd/labd-tp4/labd-4/" (21733 6371 3264 504000) "individu.xsd" ".emacs.desktop" "personnes.xml" "championnat.xml" "personnes.xsd" "a.xml" "examen-2.xsd" "exercice4.xsd" "./" "../" "#personnes.xsd#" "._individu.xsd" "._insee-commun.xsd" "insee-commun.xsd" "._personnes.xml" "examen-1.xsd")
+
+ ("/home/arctarus/Documents/fac/master/s2/pac/pac-tp2/two-time-pad/" (21738 2534 65227 364000) "./" "../" "two-time-pad.py")
+
+ ("/home/arctarus/Documents/fac/master/s2/pac/pac-tp2/padding-attack/" (21738 3127 88051 47000) "./" "../" "padding-attack.py~" "padding-attack.py")
+
+ ("/home/arctarus/Documents/fac/master/s2/pac/pac-tp2/" (21738 2479 144039 738000) "./" "../" ".gitignore" "README.md" ".git/" "client.py" "two-time-pad/" "__pycache__/" "bribe/" "padding-attack/")
+
+ ("/home/arctarus/Documents/fac/master/s2/pji/gnunet-whanau/" (21738 12520 291057 80000) "./" "../" ".gitignore" "README.md" ".git/" "#todo.lst#")
+
+ ("/home/arctarus/Documents/fac/master/s2/pji/gnunet-0.10.1/src/dht/" (21710 3606 613759 590000) "gnunet-service-dht.o" ".libs/" "gnunet-dht-monitor.c" "gnunet-service-dht_clients.o" "gnunet-dht-monitor.o" "gnunet-service-dht_routing.o" "gnunet-service-dht.h" "test_dht_line.conf" "gnunet-service-xdht_clients.c" "gnunet-service-dht_neighbours.c" "gnunet-service-xdht_nse.o" "gnunet-service-dht_hello.o" "plugin_block_dht.c" "dht.h" "gnunet-service-xdht.c" "gnunet-service-dht_nse.o" "gnunet-dht-put.o" "gnunet-service-xdht_routing.o" "dht_test_lib.c" "gnunet-service-dht-xvine" "gnunet-service-xdht_datacache.c" "Makefile" "gnunet-service-dht_nse.h" ".deps/" "test_dht_multipeer.conf" "test_dht_api.c" "gnunet-service-xdht_nse.h" "./" "dht_test_lib.o" "../" "libgnunetdhttest.a" "gnunet-service-dht_neighbours.o" "gnunet-dht-get.c" "gnunet-service-dht_datacache.o" "gnunet-service-xdht_hello.c" "gnunet-service-dht.c" "gnunet-service-dht_nse.c" "dht.conf" "gnunet-service-dht_routing.h" "gnunet-service-xdht_routing.h" "gnunet-service-xdht_neighbours.o" "gnunet-service-dht_clients.h" "gnunet-service-dht_hello.h" "libgnunet_plugin_block_dht.la" "gnunet-dht-get" "dht.conf.in" "test_dht_monitor.conf" "gnunet-dht-put.c" "gnunet-service-xdht_clients.h" "gnunet-service-dht_datacache.c" "gnunet-dht-get.o" "gnunet-service-xdht_datacache.o" "Makefile.am" "gnunet-service-dht_datacache.h" "gnunet-service-xdht_hello.o" "gnunet-service-dht" "dht_test_lib.h" "gnunet-service-dht_clients.c" "test_dht_monitor.c" "gnunet-service-dht_hello.c" "gnunet-service-xdht_neighbours.c" "test_dht_tools.py.in" "dht_api.lo" "dht_api.c" "gnunet-service-xdht_nse.c" "gnunet-service-xdht_datacache.h" "gnunet-service-xdht_clients.o" "test_dht_api_peer1.conf" "gnunet-dht-put" "gnunet-service-xdht.o" "gnunet-service-dht_routing.c" "libgnunetdht.la" "gnunet-service-xdht.h" "gnunet-service-xdht_hello.h" "gnunet-dht-monitor" "Makefile.in" "test_dht_api_data.conf" "test_dht_multipeer_topology.dat" "test_dht_tools.py" "gnunet-service-xdht_routing.c" "gnunet-service-dht_neighbours.h" "plugin_block_dht.lo" "gnunet-service-xdht_neighbours.h" "test_dht_topo.c" "test_dht_2dtorus.conf")
+
+ ("/home/arctarus/Documents/fac/master/s2/pji/gnunet-0.10.1/src/include/" (21710 3130 263484 74000) "gnunet_peerinfo_service.h" "plibc.h" "gnunet_namestore_service.h" "gnunet_namestore_plugin.h" "gnunet_service_lib.h" "gnunet_env_lib.h" "gnunet_mysql_lib.h" "gnunet_disk_lib.h" "block_fs.h" "gnunet_network_lib.h" "gnunet_revocation_service.h" "gnunet_datacache_plugin.h" "gnunet_tun_lib.h" "gnunet_resolver_service.h" "Makefile" "gnunet_set_service.h" "gnunet_util_lib.h" "gauger.h" "gnunet_protocols.h" "gnunet_testbed_logger_service.h" "gnunet_mesh_service.h" "gnunet_dv_service.h" "gnunet_secretsharing_service.h" "gnunet_scalarproduct_service.h" "gettext.h" "gnunet_common.h" "./" "../" "gnunet_signatures.h" "gnunet_client_lib.h" "gnunet_constants.h" "platform.h" "gnunet_signal_lib.h" "gnunet_hello_lib.h" "gnunet_psycstore_plugin.h" "gnunet_configuration_lib.h" "gnunet_dnsstub_lib.h" "gnunet_nse_service.h" "gnunet_namecache_service.h" "gnunet_gns_service.h" "gnunet_core_service.h" "gnunet_fragmentation_lib.h" "gnunet_vpn_service.h" "gnunet_program_lib.h" "gnunet_gnsrecord_plugin.h" "gnunet_arm_service.h" "gnunet_transport_plugin.h" "gnunet_datastore_service.h" "gnunet_strings_lib.h" "gnunet_bio_lib.h" "gnunet_container_lib.h" "Makefile.am" "gnunet_dns_service.h" "gnunet_conversation_service.h" "gnunet_plugin_lib.h" "gnunet_helper_lib.h" "gnunet_datastore_plugin.h" "winproc.h" "gnunet_crypto_lib.h" "gnunet_consensus_service.h" "gnunet_microphone_lib.h" "gnunet_bandwidth_lib.h" "gnunet_identity_service.h" "gnunet_block_lib.h" "gnunet_time_lib.h" "gnunet_statistics_service.h" "gnunet_dht_service.h" "block_regex.h" "gnunet_server_lib.h" "gnunet_datacache_lib.h" "gnunet_peer_lib.h" "gnunet_psyc_service.h" "gnunet_mq_lib.h" "gnunet_nat_lib.h" "gnunet_block_plugin.h" "gnunet_os_lib.h" "gnunet_fs_service.h" "gnunet_testbed_service.h" "gnunet_regex_service.h" "gnunet_getopt_lib.h" "gnunet_postgres_lib.h" "Makefile.in" "block_dns.h" "gnunet_speaker_lib.h" "gnunet_connection_lib.h" "gnunet_namecache_plugin.h" "gnunet_multicast_service.h" "gnunet_scheduler_lib.h" "gnunet_psycstore_service.h" "gnunet_friends_lib.h" "gnunet_applications.h" "gnunet_testing_lib.h" "gnunet_load_lib.h" "gnunet_transport_service.h" "gnunet_gnsrecord_lib.h" "gnunet_dnsparser_lib.h" "gnunet_ats_plugin.h" "gnunet_ats_service.h")
+
+ ("/home/arctarus/Documents/fac/master/s2/pji/gnunet-0.10.1/src/" (21710 3129 383471 179000) "psycstore/" "fs/" "datacache/" "nat/" "ats-tests/" "transport/" "hello/" "multicast/" "Makefile" "arm/" "dht/" "mysql/" "util/" "revocation/" "./" "../" "block/" "statistics/" "identity/" "secretsharing/" "gns/" "testing/" "topology/" "template/" "set/" "core/" "nse/" "gnsrecord/" "scalarproduct/" "pt/" "fragmentation/" "vpn/" "ats/" "Makefile.am" "dns/" "ats-tool/" "regex/" "psyc/" "env/" "integration-tests/" "namecache/" "datastore/" "tun/" "peerinfo-tool/" "dv/" "namestore/" "hostlist/" "postgres/" "testbed/" "Makefile.in" "consensus/" "conversation/" "mesh/" "include/" "experimentation/" "exit/" "peerinfo/")
+
+ ("/home/arctarus/Documents/fac/master/s2/pji/gnunet-0.10.1/" (21711 29534 363125 122000) "depcomp" "contrib/" "COPYING" "README" "test-driver" "latex/" "aclocal.m4" "Makefile" "./" "../" "config.status" "src/" "doc/" "config.sub" "compile" "ABOUT-NLS" "m4/" "stamp-h1" "NEWS" "gnunet_config.h.in" "libtool" "INSTALL" "Makefile.am" "configure" "install-sh" "config.rpath" "acinclude.m4" "po/" "html/" "config.log" "config.guess" "AUTHORS" "ltmain.sh" "Makefile.in" "missing" "gnunet_config.h" "ChangeLog" "pkgconfig/" "configure.ac")
+
+ ("/home/arctarus/Documents/fac/master/s2/car/" (21735 24893 49359 534000) "CAR-TP1/" "./" "../" "CAR-TP2/" ".metadata/" "tdtp-14-15.pdf")
+
+ ("/home/arctarus/Documents/fac/master/s2/labd/labd-tp2/" (21705 10273 270289 545000) "./" "../" ".gitignore" "README.md" ".git/" "labd-2/" "labd-2.tgz")
+
+ ("/home/arctarus/Documents/fac/master/s2/labd/labd-tp3/" (21714 38033 83522 1000) "championnat.xml" "expression.xsd" "exercice4.xsd" "./" "../" "okaz.xml" ".gitignore" "README.md" ".git/" "expression.xml" "exercice1.xsd" "labd-3/" "exercice1.xml" "labd-3.tgz" "exercice2.xsd")
+
+ ("/home/arctarus/Documents/fac/master/s2/ppd/PPD-TP1/src/" (21723 21436 757980 406000) "mpidefs.h" "pp.c" "Makefile" "mpi_fortdefs.h" "./" "../" "mpi_errno.h" "df.c" "df.readme" "mandelbrot/" "mandel-seq.c" "to-do-list.txt" "dfin.tab" "pp.readme" "df1.tab" "libmpich.a" "mpi.h" "dfout.tab" "Readme" "mpio.h")
+
+ ("/home/arctarus/Documents/fac/master/s2/ppd/" (21711 39705 376764 53000) "PPD-TP1/" "./" "../")
+
+ ("/home/arctarus/Documents/fac/master/s2/pac/" (21724 53998 332629 117000) "pac-key/" "./" "../" "pac-tp1/" "pac-tp1-dewarumez.tar.gz" "pac-tp2/")
+
+ ("/home/arctarus/Documents/fac/master/s2/pji/" (21723 57170 591545 480000) "gnunet-c-tutorial.pdf" "./" "../" "gnunet-0.10.1/" "gnunet-0.10.1.tar.gz" "gnunet-whanau/")
+
+ ("/home/arctarus/Documents/fac/master/s2/ase++/multi_core/etc/" (21729 49579 69982 267000) "./" "../" "core.ini" "hardware.ini")
+
+ ("/tmp/ASE_TP5/" (21729 51620 303226 683000) "ex2.c" "ex3.c" "ex1.c" "hw.h" "../" "./")
+
+ ("/home/" (21019 17433 843345 808000) "../" "guest_account/" "./" "arctarus/" "lost+found/")
+
+ ("/home/arctarus/Documents/fac/master/s2/ase++/" (21720 33804 392440 2000) "ase-shell/" "./" "../" "multi_core/")
+
+ ("/home/arctarus/Documents/fac/master/s2/" (21711 39633 593428 392000) "pac/" "ppd/" "./" "../" "car/" "labd/" "ase++/" "pji/")
+
+ ("/home/arctarus/Documents/fac/master/" (21683 35720 449153 27000) "s1/" "candidature/" "./" "../" "s2/" ".directory")
+
+ ("/home/arctarus/Documents/fac/" (21615 34386 723254 193000) "aei/" "./" "../" "Terena-chaine_autorites.pem.old" "licence/" "emploi_etudiant/" "Terena-chaine_autorites.pem" "openvpn_etu.conf" "CRL/" "logement/" "master/")
+
+ ("/home/arctarus/Projets/emacs.t/.emacs.d/" (21714 7457 948131 149000) "semanticdb/" "ede-projects.elc" "line-comment-banner.elc" "ac-comphist.dat" "eshell/" ".python-environments/" "line-comment-banner.el" "url/" "./" "../" "abbrev_defs" "ede-projects.el" "auto-save-list/" ".emacs.desktop" "elpa/")
+
+ ("/home/arctarus/Projets/emacs.t/" (21714 7457 528114 646000) ".emacs" "./" ".emacs.d/" "../")
+
+ ("/home/arctarus/Projets/" (21724 37572 257806 625000) "create_makefile/" "emacs.save/" "bonjour/" "dzen2_test/" ".directory" "clean/" "usefull-tips/" ".metadata/" "evil/" "latex/" "projet_tracking/" "bordel/" "xml_etree/" "tracking/" "OB_pipemenu_drive/" "./" "weatherlcd/" "../" "save/" "emacs/" "scripts/" "OB_moc_pipe/" "download_package/" "emacs.t/")
+)
+
+;; ----- ido-unc-hosts-cache -----
+t
