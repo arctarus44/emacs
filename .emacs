@@ -45,14 +45,13 @@
 ;(require 'multiple-cursors)
 (global-hl-line-mode 1)
 
+(setq-default cursor-type 'bar)
 (custom-set-variables
  ;; custom-set-variables was added by Custom.
  ;; If you edit it by hand, you could mess it up, so be careful.
  ;; Your init file should contain only one such instance.
  ;; If there is more than one, they won't work right.
  '(battery-mode-line-format " [%b%p%%]")
- '(blink-cursor-blinks 1)
- '(blink-cursor-mode nil)
  '(column-number-mode t)
  '(delete-selection-mode 1)
  '(desktop-save t)
@@ -174,10 +173,11 @@
  ;; Your init file should contain only one such instance.
  ;; If there is more than one, they won't work right.
  '(default ((t (:inherit nil :stipple nil :background "#242424" :foreground "#f6f3e8" :inverse-video nil :box nil :strike-through nil :overline nil :underline nil :slant normal :weight normal :height 128 :width normal :foundry "bold" :family "Inconsolata"))))
+ '(cursor ((t (:background "dark orange"))))
  '(flymake-errline ((t (:inherit nil :underline (:color "red" :style wave)))))
  '(hl-line ((t (:background "gray15"))))
  '(linum ((t (:inherit (default shadow default)))))
- '(minibuffer-prompt ((t (:foreground "blue"))))
+ '(minibuffer-prompt ((t (:foreground "DarkGoldenrod2" :weight bold))))
  '(mode-line ((t (:foreground "orange"))))
  '(rainbow-delimiters-depth-1-face ((t (:foreground "cyan"))))
  '(rainbow-delimiters-depth-2-face ((t (:foreground "magenta"))))
@@ -206,7 +206,7 @@
  '(whitespace-space-after-tab ((t (:background "gray17" :foreground "DarkOrange4"))))
  '(whitespace-space-before-tab ((t (:background "gray17" :foreground "DarkOrange4"))))
  '(whitespace-tab ((t (:foreground "DarkOrange4"))))
- '(whitespace-trailing ((t (:background "gray20" :foreground "gray5")))))
+ '(whitespace-trailing ((t (:foreground "DarkOrange4")))))
 
 ;; System configuration
 (fset 'yes-or-no-p 'y-or-n-p)
