@@ -66,7 +66,7 @@
  '(flymake-start-syntax-check-on-newline nil)
  '(global-linum-mode t)
  '(global-whitespace-mode t)
- '(indent-tabs-mode t)
+ ;; '(indent-tabs-mode t)
  '(inhibit-startup-screen t)
  '(make-pointer-invisible t)
  '(menu-bar-mode nil)
@@ -203,7 +203,7 @@
  '(whitespace-line ((t (:underline (:color "DarkOrange4" :style wave)))))
  '(whitespace-newline ((t (:foreground "gray25"))))
  '(whitespace-space ((t (:foreground "DarkOrange4"))))
- '(whitespace-space-after-tab ((t (:background "gray17" :foreground "DarkOrange4"))))
+ '(whitespace-space-after-tab ((t (:background "gray14" :foreground "DarkOrange4"))))
  '(whitespace-space-before-tab ((t (:background "gray17" :foreground "DarkOrange4"))))
  '(whitespace-tab ((t (:foreground "DarkOrange4"))))
  '(whitespace-trailing ((t (:foreground "DarkOrange4")))))
@@ -290,3 +290,48 @@
 (global-set-key (kbd "C-<") 'mc/mark-previous-like-this)
 (global-set-key (kbd "C-c C-<") 'mc/mark-all-like-this)
 (put 'upcase-region 'disabled nil)
+(put 'downcase-region 'disabled nil)
+
+;; Smart tabs
+    (setq-default tab-width 4) ; or any other preferred value
+    (setq cua-auto-tabify-rectangles nil)
+
+    (defadvice align (around smart-tabs activate)
+      (let ((indent-tabs-mode nil)) ad-do-it))
+
+    (defadvice align-regexp (around smart-tabs activate)
+      (let ((indent-tabs-mode nil)) ad-do-it))
+
+    (defadvice indent-relative (around smart-tabs activate)
+      (let ((indent-tabs-mode nil)) ad-do-it))
+
+    (defadvice indent-according-to-mode (around smart-tabs activate)
+      (let ((indent-tabs-mode indent-tabs-mode))
+        (if (memq indent-line-function
+                  '(indent-relative
+                    indent-relative-maybe))
+            (setq indent-tabs-mode nil))
+        ad-do-it))
+
+    (defmacro smart-tabs-advice (function offset)
+      `(progn
+         (defvaralias ',offset 'tab-width)
+         (defadvice ,function (around smart-tabs activate)
+           (cond
+            (indent-tabs-mode
+             (save-excursion
+               (beginning-of-line)
+               (while (looking-at "\t*\\( +\\)\t+")
+                 (replace-match "" nil nil nil 1)))
+             (setq tab-width tab-width)
+             (let ((tab-width fill-column)
+                   (,offset fill-column)
+                   (wstart (window-start)))
+               (unwind-protect
+                   (progn ad-do-it)
+                 (set-window-start (selected-window) wstart))))
+            (t
+             ad-do-it)))))
+
+    (smart-tabs-advice c-indent-line c-basic-offset)
+    (smart-tabs-advice c-indent-region c-basic-offset)
