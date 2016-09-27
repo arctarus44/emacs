@@ -7,6 +7,16 @@
   (blink-cursor-mode 0)
 
   (defun toggle-fullscreen ()
+  (defun zoom-out ()
+    (interactive)
+    (text-scale-adjust -1))
+
+  (toggle-frame-maximized)
+  (global-set-key (kbd "M-RET") 'toggle-frame-maximized)
+  (global-set-key (kbd "<C-mouse-4>") 'zoom-in)
+  (global-set-key (kbd "<C-mouse-5>") 'zoom-out)
+  (global-set-key (kbd "C-+") 'zoom-in)
+
     (interactive)
     (set-frame-parameter nil 'fullscreen
                          (if (frame-parameter nil 'fullscreen)
@@ -41,6 +51,13 @@
 ;; Linum-mode
 (setq linum-format "%d ")
 (global-linum-mode 1)
+(custom-set-faces
+ '(linum ((t (:inherit (default shadow default) :foreground "gray40")))))
+
+;; highligth current line
+(global-hl-line-mode +1)
+(custom-set-faces
+ '(hl-line ((t (:background "gray19")))))
 
 
 ;; Shortcut
@@ -74,3 +91,9 @@
 (global-set-key (kbd "C-c C-<") 'mc/mark-all-like-this)
 (put 'upcase-region 'disabled nil)
 (put 'downcase-region 'disabled nil)
+(custom-set-variables
+ ;; custom-set-variables was added by Custom.
+ ;; If you edit it by hand, you could mess it up, so be careful.
+ ;; Your init file should contain only one such instance.
+ ;; If there is more than one, they won't work right.
+ )
