@@ -1,3 +1,41 @@
+(defun gui-configuration()
+  (load-theme 'wombat)
+  (tool-bar-mode -1) ;; disable toolbar
+  (menu-bar-mode -1) ;; disable menubar
+  (toggle-scroll-bar -1) ;; disable scrollbar
+
+  (defun toggle-fullscreen ()
+    (interactive)
+    (set-frame-parameter nil 'fullscreen
+                         (if (frame-parameter nil 'fullscreen)
+                             nil 'fullboth)))
+
+  (defun zoom-in ()
+    (interactive)
+    (text-scale-adjust +1))
+
+  (defun zoom-out ()
+    (interactive)
+    (text-scale-adjust -1))
+
+  (toggle-frame-maximized)
+  (global-set-key (kbd "M-RET") 'toggle-frame-maximized)
+  (global-set-key (kbd "<C-mouse-4>") 'zoom-in)
+  (global-set-key (kbd "<C-mouse-5>") 'zoom-out)
+  (global-set-key (kbd "C-+") 'zoom-in)
+  (global-set-key (kbd "C--") 'zoom-out)
+  )
+
+(defun term-configuration()
+  )
+
+
+(if (display-graphic-p)
+    (gui-configuration)
+  (term-configuration)
+  )
+
+
 ;; Shortcut
 (global-set-key (kbd "M-s M-t") 'term)
 (global-set-key [f5] 'tabbar-backward-tab)
