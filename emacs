@@ -1,8 +1,10 @@
+;;  Graphical stuffs
 (defun gui-configuration()
   (load-theme 'wombat)
   (tool-bar-mode -1) ;; disable toolbar
   (menu-bar-mode -1) ;; disable menubar
   (toggle-scroll-bar -1) ;; disable scrollbar
+  (blink-cursor-mode 0)
 
   (defun toggle-fullscreen ()
     (interactive)
@@ -26,14 +28,19 @@
   (global-set-key (kbd "C--") 'zoom-out)
   )
 
+;; Terminal stuffs
 (defun term-configuration()
   )
-
 
 (if (display-graphic-p)
     (gui-configuration)
   (term-configuration)
   )
+
+
+;; Linum-mode
+(setq linum-format "%d ")
+(global-linum-mode 1)
 
 
 ;; Shortcut
