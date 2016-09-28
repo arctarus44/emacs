@@ -38,6 +38,11 @@
   (global-set-key (kbd "C--") 'zoom-out)
   )
 
+
+;; Path
+(add-to-list 'load-path "/home/arctarus/.emacs.d/elisp")
+
+;; Package stuffs
 (package-initialize)
 (require 'package)
 (add-to-list 'package-archives '("melpa" . "http://melpa.org/packages/"))
@@ -56,12 +61,20 @@
 (setq linum-format "%d ")
 (global-linum-mode 1)
 (custom-set-faces
+ '(hl-line ((t (:background "gray19"))))
  '(linum ((t (:inherit (default shadow default) :foreground "gray40")))))
 
 ;; highligth current line
 (global-hl-line-mode +1)
+(setq-default fill-column 80)
 (custom-set-faces
  '(hl-line ((t (:background "gray19")))))
+
+;; Fill Column Indicator
+(require 'fill-column-indicator)
+(add-hook 'after-change-major-mode-hook 'fci-mode) ; use fci for every file
+(setq fci-rule-width 1)
+(setq fci-rule-color "darkorange")
 
 
 ;; Shortcut
@@ -100,4 +113,4 @@
  ;; If you edit it by hand, you could mess it up, so be careful.
  ;; Your init file should contain only one such instance.
  ;; If there is more than one, they won't work right.
- )
+ '(inhibit-startup-screen t))
