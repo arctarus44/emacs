@@ -75,7 +75,7 @@
 (require 'fill-column-indicator)
 (add-hook 'after-change-major-mode-hook 'fci-mode) ; use fci for every file
 (setq fci-rule-width 1)
-(setq fci-rule-color "darkorange")
+(setq fci-rule-color "darkorange4")
 
 ;; Mode-line configuration
 ;; TODO test if the battery is correctly displayed on a laptop. 
