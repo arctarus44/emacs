@@ -5,6 +5,8 @@
   (menu-bar-mode -1) ;; disable menubar
   (toggle-scroll-bar -1) ;; disable scrollbar
   (blink-cursor-mode 0)
+  (setq-default cursor-type 'bar)
+  (set-cursor-color "deepskyblue") 
 
   (defun toggle-fullscreen ()
   (defun zoom-out ()
