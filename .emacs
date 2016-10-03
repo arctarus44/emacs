@@ -69,12 +69,22 @@
  ;; If there is more than one, they won't work right.
  '(hl-line ((t (:background "gray19"))))
  '(linum ((t (:inherit (default shadow default) :foreground "gray40"))))
- '(mode-line ((t (:background "#444444" :foreground "orange")))))
+ '(minimap-active-region-background ((t (:background "gray17"))))
+ '(mode-line ((t (:background "#444444" :foreground "orange"))))
+ '(rainbow-delimiters-depth-1-face ((t (:foreground "cyan"))))
+ '(rainbow-delimiters-depth-2-face ((t (:foreground "magenta"))))
+ '(rainbow-delimiters-depth-3-face ((t (:foreground "blue"))))
+ '(rainbow-delimiters-depth-4-face ((t (:foreground "yellow"))))
+ '(rainbow-delimiters-depth-5-face ((t (:foreground "green"))))
+ '(rainbow-delimiters-depth-6-face ((t (:foreground "cyan" :weight bold))))
+ '(rainbow-delimiters-depth-7-face ((t (:foreground "magenta" :weight bold))))
+ '(rainbow-delimiters-depth-8-face ((t (:foreground "blue" :weight bold))))
+ '(rainbow-delimiters-depth-9-face ((t (:foreground "yellow" :weight bold))))
+ '(rainbow-delimiters-unmatched-face ((t (:foreground "red" :weight bold)))))
 
 ;; highligth current line
 (global-hl-line-mode +1)
 (setq-default fill-column 80)
-
 
 ;; Fill Column Indicator
 (require 'fill-column-indicator)
@@ -94,24 +104,12 @@
  '(column-number-mode t)
  '(display-time-24hr-format t)
  '(display-time-default-load-average nil)
- '(display-time-mode t))
+ '(display-time-mode t)
+ '(package-selected-packages (quote (minimap rainbow-delimiters))))
 
 ;; Rainbow delimiters
 (require 'rainbow-delimiters)
 (add-hook 'prog-mode-hook 'rainbow-delimiters-mode)
-(custom-set-faces
- '(rainbow-delimiters-depth-1-face ((t (:foreground "cyan"))))
- '(rainbow-delimiters-depth-2-face ((t (:foreground "magenta"))))
- '(rainbow-delimiters-depth-3-face ((t (:foreground "blue"))))
- '(rainbow-delimiters-depth-4-face ((t (:foreground "yellow"))))
- '(rainbow-delimiters-depth-5-face ((t (:foreground "green"))))
- '(rainbow-delimiters-depth-6-face ((t (:foreground "cyan" :weight bold))))
- '(rainbow-delimiters-depth-7-face ((t (:foreground "magenta" :weight bold))))
- '(rainbow-delimiters-depth-8-face ((t (:foreground "blue" :weight bold))))
- '(rainbow-delimiters-depth-9-face ((t (:foreground "yellow" :weight bold))))
- '(rainbow-delimiters-unmatched-face ((t (:foreground "red" :weight bold)))))
-
-
 
 ;; Shortcut
 (global-set-key (kbd "M-s M-t") 'term)
