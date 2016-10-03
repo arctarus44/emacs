@@ -67,14 +67,25 @@
 ;; highligth current line
 (global-hl-line-mode +1)
 (setq-default fill-column 80)
-(custom-set-faces
- '(hl-line ((t (:background "gray19")))))
+
 
 ;; Fill Column Indicator
 (require 'fill-column-indicator)
 (add-hook 'after-change-major-mode-hook 'fci-mode) ; use fci for every file
 (setq fci-rule-width 1)
 (setq fci-rule-color "darkorange")
+
+;; Mode-line configuration
+;; TODO test if the battery is correctly displayed on a laptop. 
+(display-battery-mode 1)
+(custom-set-variables
+ '(battery-mode-line-format " [%b%p%%]")
+ '(column-number-mode t)
+ '(display-time-24hr-format t)
+ '(display-time-default-load-average nil)
+ '(display-time-mode t))
+(custom-set-faces
+ '(mode-line ((t (:background "#444444" :foreground "orange")))))
 
 
 ;; Shortcut
@@ -108,9 +119,4 @@
 (global-set-key (kbd "C-c C-<") 'mc/mark-all-like-this)
 (put 'upcase-region 'disabled nil)
 (put 'downcase-region 'disabled nil)
-(custom-set-variables
- ;; custom-set-variables was added by Custom.
- ;; If you edit it by hand, you could mess it up, so be careful.
- ;; Your init file should contain only one such instance.
- ;; If there is more than one, they won't work right.
- '(inhibit-startup-screen t))
+
