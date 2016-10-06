@@ -56,7 +56,8 @@
 ;; Packages
 (package-initialize)
 (require 'package)
-(add-to-list 'package-archives '("melpa" . "http://melpa.org/packages/"))
+(add-to-list 'package-archives '(("melpa" . "https://melpa.org/packages/")
+	                        ("gnu" . "https://elpa.gnu.org/packages/")))
 
 ;; Linum-mode
 (setq linum-format "%d ")
@@ -80,6 +81,10 @@
 (add-hook 'prog-mode-hook 'rainbow-delimiters-mode)
 
 (custom-set-faces
+ ;; custom-set-faces was added by Custom.
+ ;; If you edit it by hand, you could mess it up, so be careful.
+ ;; Your init file should contain only one such instance.
+ ;; If there is more than one, they won't work right.
  '(hl-line ((t (:background "gray19"))))
  '(linum ((t (:inherit (default shadow default) :foreground "gray40"))))
  '(minimap-active-region-background ((t (:background "gray17"))))
@@ -96,12 +101,16 @@
  '(rainbow-delimiters-unmatched-face ((t (:foreground "red" :weight bold)))))
 
 (custom-set-variables
+ ;; custom-set-variables was added by Custom.
+ ;; If you edit it by hand, you could mess it up, so be careful.
+ ;; Your init file should contain only one such instance.
+ ;; If there is more than one, they won't work right.
  '(battery-mode-line-format " [%b%p%%]")
  '(column-number-mode t)
  '(display-time-24hr-format t)
  '(display-time-default-load-average nil)
  '(display-time-mode t)
- '(package-selected-packages (quote (minimap rainbow-delimiters))))
+ '(package-selected-packages (quote (undo-tree minimap rainbow-delimiters))))
 
 ;; Shortcut
 (global-set-key (kbd "M-s M-t") 'term)
