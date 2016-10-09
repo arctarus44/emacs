@@ -9,15 +9,15 @@
   (set-cursor-color "deepskyblue") 
 
   (defun toggle-fullscreen ()
-  (defun zoom-out ()
-    (interactive)
-    (text-scale-adjust -1))
+    (defun zoom-out ()
+      (interactive)
+      (text-scale-adjust -1))
 
-  (toggle-frame-maximized)
-  (global-set-key (kbd "M-RET") 'toggle-frame-maximized)
-  (global-set-key (kbd "<C-mouse-4>") 'zoom-in)
-  (global-set-key (kbd "<C-mouse-5>") 'zoom-out)
-  (global-set-key (kbd "C-+") 'zoom-in)
+    (toggle-frame-maximized)
+    (global-set-key (kbd "M-RET") 'toggle-frame-maximized)
+    (global-set-key (kbd "<C-mouse-4>") 'zoom-in)
+    (global-set-key (kbd "<C-mouse-5>") 'zoom-out)
+    (global-set-key (kbd "C-+") 'zoom-in)
 
     (interactive)
     (set-frame-parameter nil 'fullscreen
@@ -57,7 +57,7 @@
 (package-initialize)
 (require 'package)
 (add-to-list 'package-archives '(("melpa" . "https://melpa.org/packages/")
-	                        ("gnu" . "https://elpa.gnu.org/packages/")))
+				 ("gnu" . "https://elpa.gnu.org/packages/")))
 
 ;; Linum-mode
 (setq linum-format "%d ")
@@ -83,6 +83,9 @@
 ;; Undo tree mode
 (global-undo-tree-mode)
 
+;; Whitespace mode
+(require 'whitespace) ;; activate
+
 (custom-set-faces
  ;; custom-set-faces was added by Custom.
  ;; If you edit it by hand, you could mess it up, so be careful.
@@ -101,7 +104,17 @@
  '(rainbow-delimiters-depth-7-face ((t (:foreground "magenta" :weight bold))))
  '(rainbow-delimiters-depth-8-face ((t (:foreground "blue" :weight bold))))
  '(rainbow-delimiters-depth-9-face ((t (:foreground "yellow" :weight bold))))
- '(rainbow-delimiters-unmatched-face ((t (:foreground "red" :weight bold)))))
+ '(rainbow-delimiters-unmatched-face ((t (:foreground "red" :weight bold))))
+ '(whitespace-empty ((t nil)))
+ '(whitespace-hspace ((t (:foreground "DarkOrange4"))))
+ '(whitespace-indentation ((t (:foreground "gray50"))))
+ '(whitespace-line ((t (:underline (:color "DarkOrange4" :style wave)))))
+ '(whitespace-newline ((t (:foreground "gray25"))))
+ '(whitespace-space ((t (:foreground "DarkOrange4"))))
+ '(whitespace-space-after-tab ((t (:background "gray14" :foreground "DarkOrange4"))))
+ '(whitespace-space-before-tab ((t (:background "gray17" :foreground "DarkOrange4"))))
+ '(whitespace-tab ((t (:foreground "DarkOrange4"))))
+ '(whitespace-trailing ((t (:foreground "DarkOrange4")))))
 
 (custom-set-variables
  ;; custom-set-variables was added by Custom.
