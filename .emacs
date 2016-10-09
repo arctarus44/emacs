@@ -13,7 +13,9 @@
  '(display-time-24hr-format t)
  '(display-time-default-load-average nil)
  '(display-time-mode t)
- '(package-selected-packages (quote (undo-tree minimap rainbow-delimiters)))
+ '(package-selected-packages
+   (quote
+    (multiple-cursors tabbar undo-tree minimap rainbow-delimiters)))
  '(tabbar-mode t nil (tabbar)))
 
 ;;  Graphical stuffs
@@ -68,10 +70,10 @@
   )
 
 ;; Packages
-(package-initialize)
 (require 'package)
-(add-to-list 'package-archives '(("melpa" . "https://melpa.org/packages/")
-                                ("gnu" . "https://elpa.gnu.org/packages/")))
+(add-to-list 'package-archives '("melpa" . "https://melpa.org/packages/"))
+(add-to-list 'package-archives '("gnu" . "https://elpa.gnu.org/packages/"))
+(package-initialize)
 
 ;; Linum-mode
 (setq linum-format "%d ")
@@ -124,6 +126,13 @@
  '(rainbow-delimiters-depth-8-face ((t (:foreground "blue" :weight bold))))
  '(rainbow-delimiters-depth-9-face ((t (:foreground "yellow" :weight bold))))
  '(rainbow-delimiters-unmatched-face ((t (:foreground "red" :weight bold))))
+ '(tabbar-button ((t (:inherit tabbar-default :foreground "black"))))
+ '(tabbar-default ((t (:inherit variable-pitch :background "gray14" :foreground "dark gray" :height 0.8))))
+ '(tabbar-highlight ((t nil)))
+ '(tabbar-modified ((t (:inherit tabbar-default :foreground "dark magenta" :box nil :weight semi-bold))))
+ '(tabbar-selected ((t (:inherit tabbar-default :foreground "orange red" :weight bold))))
+ '(tabbar-separator ((t (:inherit tabbar-default :background "gray14" :height 0.2))))
+ '(tabbar-unselected ((t (:inherit tabbar-default :foreground "dark magenta" :weight semi-bold))))
  '(whitespace-empty ((t nil)))
  '(whitespace-hspace ((t (:foreground "DarkOrange4"))))
  '(whitespace-indentation ((t (:foreground "gray50"))))
@@ -133,14 +142,7 @@
  '(whitespace-space-after-tab ((t (:background "DarkOrange4" :foreground "DarkOrange4"))))
  '(whitespace-space-before-tab ((t (:background "DarkOrange4" :foreground "DarkOrange4"))))
  '(whitespace-tab ((t (:foreground "gray25"))))
- '(whitespace-trailing ((t (:foreground "DarkOrange4"))))
- '(tabbar-button ((t (:inherit tabbar-default :foreground "black"))))
- '(tabbar-default ((t (:inherit variable-pitch :background "gray14" :foreground "dark gray" :height 0.8))))
- '(tabbar-highlight ((t nil)))
- '(tabbar-modified ((t (:inherit tabbar-default :foreground "dark magenta" :box nil :weight semi-bold))))
- '(tabbar-selected ((t (:inherit tabbar-default :foreground "orange red" :weight bold))))
- '(tabbar-separator ((t (:inherit tabbar-default :background "gray14" :height 0.2))))
- '(tabbar-unselected ((t (:inherit tabbar-default :foreground "dark magenta" :weight semi-bold)))))
+ '(whitespace-trailing ((t (:foreground "DarkOrange4")))))
 
 ;; Usefull functions
 ; Delete trailling whitespace and save
