@@ -71,7 +71,7 @@
 (package-initialize)
 (require 'package)
 (add-to-list 'package-archives '(("melpa" . "https://melpa.org/packages/")
-				 ("gnu" . "https://elpa.gnu.org/packages/")))
+                                ("gnu" . "https://elpa.gnu.org/packages/")))
 
 ;; Linum-mode
 (setq linum-format "%d ")
@@ -98,7 +98,7 @@
 (global-undo-tree-mode)
 
 ;; Whitespace mode
-(require 'whitespace) ;; activate
+(global-whitespace-mode nil) ;; activate
 
 ;; Tabbar
 ;; TODO : - add some conf to group every tab into a single group
@@ -127,12 +127,12 @@
  '(whitespace-empty ((t nil)))
  '(whitespace-hspace ((t (:foreground "DarkOrange4"))))
  '(whitespace-indentation ((t (:foreground "gray50"))))
- '(whitespace-line ((t (:underline (:color "DarkOrange4" :style wave)))))
+ '(whitespace-line ((t (:underline (:color "DarkOrange4" :style wave))))
  '(whitespace-newline ((t (:foreground "gray25"))))
  '(whitespace-space ((t (:foreground "DarkOrange4"))))
- '(whitespace-space-after-tab ((t (:background "gray14" :foreground "DarkOrange4"))))
- '(whitespace-space-before-tab ((t (:background "gray17" :foreground "DarkOrange4"))))
- '(whitespace-tab ((t (:foreground "DarkOrange4"))))
+ '(whitespace-space-after-tab ((t (:background "DarkOrange4" :foreground "DarkOrange4"))))
+ '(whitespace-space-before-tab ((t (:background "DarkOrange4" :foreground "DarkOrange4"))))
+ '(whitespace-tab ((t (:foreground "gray25"))))
  '(whitespace-trailing ((t (:foreground "DarkOrange4"))))
  '(tabbar-button ((t (:inherit tabbar-default :foreground "black"))))
  '(tabbar-default ((t (:inherit variable-pitch :background "gray14" :foreground "dark gray" :height 0.8))))
