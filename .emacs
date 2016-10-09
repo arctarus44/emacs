@@ -128,7 +128,15 @@
  '(display-time-mode t)
  '(package-selected-packages (quote (undo-tree minimap rainbow-delimiters))))
 
+;; Usefull functions
+; Delete trailling whitespace and save
+(defun delete-trailing-whitespace-and-save ()
+  (interactive)
+  (delete-trailing-whitespace)
+(save-buffer))
+
 ;; Shortcut
+(global-set-key (kbd "C-x C-s") 'delete-trailing-whitespace-and-save)
 (global-set-key (kbd "M-s M-t") 'term)
 (global-set-key [f5] 'tabbar-backward-tab)
 (global-set-key [f6] 'tabbar-forward-tab)
