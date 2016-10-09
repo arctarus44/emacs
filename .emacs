@@ -127,7 +127,7 @@
  '(whitespace-empty ((t nil)))
  '(whitespace-hspace ((t (:foreground "DarkOrange4"))))
  '(whitespace-indentation ((t (:foreground "gray50"))))
- '(whitespace-line ((t (:underline (:color "DarkOrange4" :style wave))))
+ '(whitespace-line ((t (:underline (:color "DarkOrange4" :style wave)))))
  '(whitespace-newline ((t (:foreground "gray25"))))
  '(whitespace-space ((t (:foreground "DarkOrange4"))))
  '(whitespace-space-after-tab ((t (:background "DarkOrange4" :foreground "DarkOrange4"))))
