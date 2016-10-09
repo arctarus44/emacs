@@ -1,3 +1,21 @@
+;; Path
+(add-to-list 'load-path "/home/arctarus/.emacs.d/elisp")
+(add-to-list 'load-path "/home/arctarus/.emacs.d/elisp/tabbar")
+
+
+(custom-set-variables
+ ;; custom-set-variables was added by Custom.
+ ;; If you edit it by hand, you could mess it up, so be careful.
+ ;; Your init file should contain only one such instance.
+ ;; If there is more than one, they won't work right.
+ '(battery-mode-line-format " [%b%p%%]")
+ '(column-number-mode t)
+ '(display-time-24hr-format t)
+ '(display-time-default-load-average nil)
+ '(display-time-mode t)
+ '(package-selected-packages (quote (undo-tree minimap rainbow-delimiters)))
+ '(tabbar-mode t nil (tabbar)))
+
 ;;  Graphical stuffs
 (defun gui-configuration()
   (load-theme 'wombat)
@@ -6,7 +24,7 @@
   (toggle-scroll-bar -1) ;; disable scrollbar
   (blink-cursor-mode 0)
   (setq-default cursor-type 'bar)
-  (set-cursor-color "deepskyblue") 
+  (set-cursor-color "deepskyblue")
 
   (defun toggle-fullscreen ()
     (defun zoom-out ()
@@ -49,10 +67,6 @@
   (term-configuration)
   )
 
-
-;; Path
-(add-to-list 'load-path "/home/arctarus/.emacs.d/elisp")
-
 ;; Packages
 (package-initialize)
 (require 'package)
@@ -86,6 +100,11 @@
 ;; Whitespace mode
 (require 'whitespace) ;; activate
 
+;; Tabbar
+;; TODO : - add some conf to group every tab into a single group
+;;        - do not display special buffer
+;;        - change style for a modified buffer
+
 (custom-set-faces
  ;; custom-set-faces was added by Custom.
  ;; If you edit it by hand, you could mess it up, so be careful.
@@ -114,26 +133,21 @@
  '(whitespace-space-after-tab ((t (:background "gray14" :foreground "DarkOrange4"))))
  '(whitespace-space-before-tab ((t (:background "gray17" :foreground "DarkOrange4"))))
  '(whitespace-tab ((t (:foreground "DarkOrange4"))))
- '(whitespace-trailing ((t (:foreground "DarkOrange4")))))
-
-(custom-set-variables
- ;; custom-set-variables was added by Custom.
- ;; If you edit it by hand, you could mess it up, so be careful.
- ;; Your init file should contain only one such instance.
- ;; If there is more than one, they won't work right.
- '(battery-mode-line-format " [%b%p%%]")
- '(column-number-mode t)
- '(display-time-24hr-format t)
- '(display-time-default-load-average nil)
- '(display-time-mode t)
- '(package-selected-packages (quote (undo-tree minimap rainbow-delimiters))))
+ '(whitespace-trailing ((t (:foreground "DarkOrange4"))))
+ '(tabbar-button ((t (:inherit tabbar-default :foreground "black"))))
+ '(tabbar-default ((t (:inherit variable-pitch :background "gray14" :foreground "dark gray" :height 0.8))))
+ '(tabbar-highlight ((t nil)))
+ '(tabbar-modified ((t (:inherit tabbar-default :foreground "dark magenta" :box nil :weight semi-bold))))
+ '(tabbar-selected ((t (:inherit tabbar-default :foreground "orange red" :weight bold))))
+ '(tabbar-separator ((t (:inherit tabbar-default :background "gray14" :height 0.2))))
+ '(tabbar-unselected ((t (:inherit tabbar-default :foreground "dark magenta" :weight semi-bold)))))
 
 ;; Usefull functions
 ; Delete trailling whitespace and save
 (defun delete-trailing-whitespace-and-save ()
   (interactive)
   (delete-trailing-whitespace)
-(save-buffer))
+  (save-buffer))
 
 ;; Shortcut
 (global-set-key (kbd "C-x C-s") 'delete-trailing-whitespace-and-save)
@@ -165,5 +179,7 @@
 (global-set-key (kbd "C->") 'mc/mark-next-like-this)
 (global-set-key (kbd "C-<") 'mc/mark-previous-like-this)
 (global-set-key (kbd "C-c C-<") 'mc/mark-all-like-this)
+(global-set-key [f5] 'tabbar-backward-tab)
+(global-set-key [f6] 'tabbar-forward-tab)
 (put 'upcase-region 'disabled nil)
 (put 'downcase-region 'disabled nil)
