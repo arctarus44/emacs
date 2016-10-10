@@ -15,7 +15,7 @@
  '(display-time-mode t)
  '(package-selected-packages
    (quote
-    (multiple-cursors tabbar undo-tree minimap rainbow-delimiters)))
+    (2048-game multiple-cursors tabbar undo-tree minimap rainbow-delimiters)))
  '(tabbar-mode t nil (tabbar)))
 
 ;;  Graphical stuffs
