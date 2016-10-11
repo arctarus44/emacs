@@ -15,7 +15,7 @@
  '(display-time-mode t)
  '(package-selected-packages
    (quote
-    (aggressive-indent markdown-mode magit 2048-game multiple-cursors tabbar undo-tree minimap rainbow-delimiters)))
+    (rainbow-identifiers aggressive-indent markdown-mode magit 2048-game multiple-cursors tabbar undo-tree minimap rainbow-delimiters)))
  '(tabbar-mode t nil (tabbar)))
 
 ;;  Graphical stuffs
@@ -111,6 +111,9 @@
 ; Active aggressive indent for everything except html mode
 (global-aggressive-indent-mode 1)
 (add-to-list 'aggressive-indent-excluded-modes 'html-mode)
+
+;; Rainbow indentifier
+(add-hook 'prog-mode-hook 'rainbow-identifiers-mode)
 
 (custom-set-faces
  ;; custom-set-faces was added by Custom.
