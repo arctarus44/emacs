@@ -15,7 +15,7 @@
  '(display-time-mode t)
  '(package-selected-packages
    (quote
-    (markdown-mode magit 2048-game multiple-cursors tabbar undo-tree minimap rainbow-delimiters)))
+    (aggressive-indent markdown-mode magit 2048-game multiple-cursors tabbar undo-tree minimap rainbow-delimiters)))
  '(tabbar-mode t nil (tabbar)))
 
 ;;  Graphical stuffs
@@ -106,6 +106,11 @@
 ;; TODO : - add some conf to group every tab into a single group
 ;;        - do not display special buffer
 ;;        - change style for a modified buffer
+
+;; Aggressive indent
+; Active aggressive indent for everything except html mode
+(global-aggressive-indent-mode 1)
+(add-to-list 'aggressive-indent-excluded-modes 'html-mode)
 
 (custom-set-faces
  ;; custom-set-faces was added by Custom.
