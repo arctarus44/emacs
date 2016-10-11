@@ -13,6 +13,8 @@
  '(display-time-24hr-format t)
  '(display-time-default-load-average nil)
  '(display-time-mode t)
+ '(minimap-highlight-line nil)
+ '(minimap-mode t)
  '(package-selected-packages
    (quote
     (rainbow-identifiers aggressive-indent markdown-mode magit 2048-game multiple-cursors tabbar undo-tree minimap rainbow-delimiters)))
