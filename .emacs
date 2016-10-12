@@ -109,13 +109,18 @@
 ;;        - do not display special buffer
 ;;        - change style for a modified buffer
 
-;; Aggressive indent
-; Active aggressive indent for everything except html mode
-(global-aggressive-indent-mode 1)
-(add-to-list 'aggressive-indent-excluded-modes 'html-mode)
-
 ;; Rainbow indentifier
 (add-hook 'prog-mode-hook 'rainbow-identifiers-mode)
+
+;; C mode
+(setq-default c-basic-offset 4
+			  tab-width 4
+			  indent-tabs-mode t)
+
+;; Smart tabs
+(smart-tabs-insinuate 'c 'c++ 'java 'javascript 'cperl 'python 'ruby 'nxml)
+
+
 
 (custom-set-faces
  ;; custom-set-faces was added by Custom.
@@ -155,7 +160,7 @@
  '(whitespace-trailing ((t (:foreground "DarkOrange4")))))
 
 ;; Usefull functions
-; Delete trailling whitespace and save
+					; Delete trailling whitespace and save
 (defun delete-trailing-whitespace-and-save ()
   (interactive)
   (delete-trailing-whitespace)
