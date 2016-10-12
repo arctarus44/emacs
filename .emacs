@@ -17,7 +17,7 @@
  '(minimap-mode t)
  '(package-selected-packages
    (quote
-    (rainbow-identifiers aggressive-indent markdown-mode magit 2048-game multiple-cursors tabbar undo-tree minimap rainbow-delimiters)))
+	(company-irony company irony rainbow-identifiers aggressive-indent markdown-mode magit 2048-game multiple-cursors tabbar undo-tree minimap rainbow-delimiters)))
  '(tabbar-mode t nil (tabbar)))
 
 ;;  Graphical stuffs
@@ -120,6 +120,13 @@
 
 ;; Smart tabs
 (smart-tabs-insinuate 'c 'python)
+
+;; ido mode
+(require 'ido)
+(ido-mode t)
+
+;; Irony mode
+;; TODO configure mode and install server
 
 
 (custom-set-faces
