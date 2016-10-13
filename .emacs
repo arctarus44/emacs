@@ -2,7 +2,6 @@
 (add-to-list 'load-path "/home/arctarus/.emacs.d/elisp")
 (add-to-list 'load-path "/home/arctarus/.emacs.d/elisp/tabbar")
 
-
 (custom-set-variables
  ;; custom-set-variables was added by Custom.
  ;; If you edit it by hand, you could mess it up, so be careful.
@@ -105,9 +104,17 @@
 (global-whitespace-mode nil) ;; activate
 
 ;; Tabbar
-;; TODO : - add some conf to group every tab into a single group
-;;        - do not display special buffer
-;;        - change style for a modified buffer
+;; TODO change style for a modified buffer
+; Show all normal files in one group
+(defun my-tabbar-buffer-groups ()
+  "Returns the name of the tab group names the current buffer belongs to.
+ There are two groups: Emacs buffers (those whose name starts with '*', plus
+ dired buffers), and the rest.  This works at least with Emacs v24.2 using
+ tabbar.el v1.7."
+  (list (cond ((string-equal "*" (substring (buffer-name) 0 1)) "emacs")
+			  ((eq major-mode 'dired-mode) "emacs")
+			  (t "user"))))
+(setq tabbar-buffer-groups-function 'my-tabbar-buffer-groups)
 
 ;; Rainbow indentifier
 (add-hook 'prog-mode-hook 'rainbow-identifiers-mode)
@@ -125,9 +132,9 @@
 (require 'ido)
 (ido-mode t)
 
+
 ;; Irony mode
 ;; TODO configure mode and install server
-
 
 (custom-set-faces
  ;; custom-set-faces was added by Custom.
@@ -167,7 +174,7 @@
  '(whitespace-trailing ((t (:foreground "DarkOrange4")))))
 
 ;; Usefull functions
-					; Delete trailling whitespace and save
+										; Delete trailling whitespace and save
 (defun delete-trailing-whitespace-and-save ()
   (interactive)
   (delete-trailing-whitespace)
