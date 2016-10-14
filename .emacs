@@ -184,7 +184,7 @@
  '(whitespace-line ((t (:underline (:color "DarkOrange4" :style wave)))))
  '(whitespace-newline ((t (:foreground "gray25"))))
  '(whitespace-space ((t (:foreground "gray25"))))
- '(whitespace-space-after-tab ((t (:background "DarkOrange4" :foreground "DarkOrange4"))))
+ '(whitespace-space-after-tab ((t (:foreground "DarkOrange4"))))
  '(whitespace-space-before-tab ((t (:background "DarkOrange4" :foreground "DarkOrange4"))))
  '(whitespace-tab ((t (:foreground "gray25"))))
  '(whitespace-trailing ((t (:foreground "DarkOrange4")))))
