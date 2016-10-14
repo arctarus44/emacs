@@ -1,3 +1,12 @@
+;; System configuration
+(fset 'yes-or-no-p 'y-or-n-p)
+(prefer-coding-system 'utf-8)
+(setq-default indent-tabs-mode nil)
+(setq default-tab-width 4)
+(delete-selection-mode 1)
+(global-set-key (kbd "DEL") 'backward-delete-char)
+(setq c-backspace-function 'backward-delete-char)
+
 ;; Path
 (add-to-list 'load-path "/home/arctarus/.emacs.d/elisp")
 (add-to-list 'load-path "/home/arctarus/.emacs.d/elisp/tabbar")
@@ -16,7 +25,7 @@
  '(minimap-mode t)
  '(package-selected-packages
    (quote
-	(company-irony company irony rainbow-identifiers aggressive-indent markdown-mode magit 2048-game multiple-cursors tabbar undo-tree minimap rainbow-delimiters)))
+	(irony company-irony-c-headers flycheck-irony irony-eldoc ## company-irony company rainbow-identifiers aggressive-indent markdown-mode magit 2048-game multiple-cursors tabbar undo-tree minimap rainbow-delimiters)))
  '(tabbar-mode t nil (tabbar)))
 
 ;;  Graphical stuffs
@@ -104,8 +113,7 @@
 (global-whitespace-mode nil) ;; activate
 
 ;; Tabbar
-;; TODO change style for a modified buffer
-; Show all normal files in one group
+										; Show all normal files in one group
 (defun my-tabbar-buffer-groups ()
   "Returns the name of the tab group names the current buffer belongs to.
  There are two groups: Emacs buffers (those whose name starts with '*', plus
@@ -134,7 +142,15 @@
 
 
 ;; Irony mode
-;; TODO configure mode and install server
+
+;; Markdown mode
+;(use-package markdown-mode
+;  :ensure t
+;  :commands (markdown-mode gfm-mode)
+;  :mode (("README\\.md\\'" . gfm-mode)
+;         ("\\.md\\'" . markdown-mode)
+;         ("\\.markdown\\'" . markdown-mode))
+;  :init (setq markdown-command "multimarkdown"))
 
 (custom-set-faces
  ;; custom-set-faces was added by Custom.
@@ -180,6 +196,21 @@
   (delete-trailing-whitespace)
   (save-buffer))
 
+(defun move-line-up ()
+  "Move up the current line."
+  (interactive)
+  (transpose-lines 1)
+  (forward-line -2)
+  (indent-according-to-mode))
+
+(defun move-line-down ()
+  "Move down the current line."
+  (interactive)
+  (forward-line 1)
+  (transpose-lines 1)
+  (forward-line -1)
+(indent-according-to-mode))
+
 ;; Shortcut
 (global-set-key (kbd "C-x C-s") 'delete-trailing-whitespace-and-save)
 (global-set-key (kbd "M-s M-t") 'term)
@@ -214,3 +245,66 @@
 (global-set-key [f6] 'tabbar-forward-tab)
 (put 'upcase-region 'disabled nil)
 (put 'downcase-region 'disabled nil)
+
+
+;; =============
+;; irony-mode
+;; =============
+(add-hook 'c++-mode-hook 'irony-mode)
+(add-hook 'c-mode-hook 'irony-mode)
+;; =============
+;; company mode
+;; =============
+(add-hook 'c++-mode-hook 'company-mode)
+(add-hook 'c-mode-hook 'company-mode)
+;; replace the `completion-at-point' and `complete-symbol' bindings in
+;; irony-mode's buffers by irony-mode's function
+(defun my-irony-mode-hook ()
+(define-key irony-mode-map [remap completion-at-point]
+  'irony-completion-at-point-async)
+(define-key irony-mode-map [remap complete-symbol]
+  'irony-completion-at-point-async))
+(add-hook 'irony-mode-hook 'my-irony-mode-hook)
+(add-hook 'irony-mode-hook 'irony-cdb-autosetup-compile-options)
+(eval-after-load 'company
+'(add-to-list 'company-backends 'company-irony))
+;; (optional) adds CC special commands to `company-begin-commands' in order to
+;; trigger completion at interesting places, such as after scope operator
+;;     std::|
+(add-hook 'irony-mode-hook 'company-irony-setup-begin-commands)
+;; =============
+;; flycheck-mode
+;; =============
+(add-hook 'c++-mode-hook 'flycheck-mode)
+(add-hook 'c-mode-hook 'flycheck-mode)
+(eval-after-load 'flycheck
+'(add-hook 'flycheck-mode-hook #'flycheck-irony-setup))
+;; =============
+;; eldoc-mode
+;; =============
+(add-hook 'irony-mode-hook 'irony-eldoc)
+;; ==========================================
+;; (optional) bind TAB for indent-or-complete
+;; ==========================================
+(defun irony--check-expansion ()
+(save-excursion
+  (if (looking-at "\\_>") t
+    (backward-char 1)
+    (if (looking-at "\\.") t
+      (backward-char 1)
+      (if (looking-at "->") t nil)))))
+(defun irony--indent-or-complete ()
+"Indent or Complete"
+(interactive)
+(cond ((and (not (use-region-p))
+            (irony--check-expansion))
+       (message "complete")
+       (company-complete-common))
+      (t
+       (message "indent")
+       (call-interactively 'c-indent-line-or-region))))
+(defun irony-mode-keys ()
+"Modify keymaps used by `irony-mode'."
+(local-set-key (kbd "TAB") 'irony--indent-or-complete)
+(local-set-key [tab] 'irony--indent-or-complete))
+(add-hook 'c-mode-common-hook 'irony-mode-keys)
