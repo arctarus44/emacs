@@ -176,6 +176,7 @@
  '(tabbar-highlight ((t nil)))
  '(tabbar-modified ((t (:inherit tabbar-default :foreground "dark magenta" :box nil :weight semi-bold))))
  '(tabbar-selected ((t (:inherit tabbar-default :foreground "orange red" :weight bold))))
+ '(tabbar-selected-modified ((t (:inherit tabbar-default))))
  '(tabbar-separator ((t (:inherit tabbar-default :background "gray14" :height 0.2))))
  '(tabbar-unselected ((t (:inherit tabbar-default :foreground "dark magenta" :weight semi-bold))))
  '(whitespace-empty ((t nil)))
