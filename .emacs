@@ -1,24 +1,67 @@
-﻿;;Theme
-(load-theme 'wombat)
+;; System configuration
+(fset 'yes-or-no-p 'y-or-n-p)
+(prefer-coding-system 'utf-8)
+(setq-default indent-tabs-mode nil)
+(setq default-tab-width 4)
+(delete-selection-mode 1)
+(global-set-key (kbd "DEL") 'backward-delete-char)
+(setq c-backspace-function 'backward-delete-char)
 
-;; Path management
-; elpa
-(add-to-list 'load-path "/home/arctarus/.emacs.d/elpa/")
-(add-to-list 'load-path "/home/arctarus/.emacs.d/lisp")
+;; Path
+(add-to-list 'load-path "/home/arctarus/.emacs.d/elisp")
+(add-to-list 'load-path "/home/arctarus/.emacs.d/elisp/tabbar")
 
-;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;; Windowed Conf ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
-(when window-system
+(custom-set-variables
+ ;; custom-set-variables was added by Custom.
+ ;; If you edit it by hand, you could mess it up, so be careful.
+ ;; Your init file should contain only one such instance.
+ ;; If there is more than one, they won't work right.
+ '(battery-mode-line-format " [%b%p%%]")
+ '(column-number-mode t)
+ '(display-time-24hr-format t)
+ '(display-time-default-load-average nil)
+ '(display-time-mode t)
+ '(minimap-highlight-line nil)
+ '(minimap-mode t)
+ '(package-selected-packages
+   (quote
+	(irony company-irony-c-headers flycheck-irony irony-eldoc ## company-irony company rainbow-identifiers aggressive-indent markdown-mode magit 2048-game multiple-cursors tabbar undo-tree minimap rainbow-delimiters)))
+ '(tabbar-mode t nil (tabbar)))
+
+;;  Graphical stuffs
+(defun gui-configuration()
+  (load-theme 'wombat)
+  (tool-bar-mode -1) ;; disable toolbar
+  (menu-bar-mode -1) ;; disable menubar
+  (toggle-scroll-bar -1) ;; disable scrollbar
+  (blink-cursor-mode 0)
+  (setq-default cursor-type 'bar)
+  (set-cursor-color "deepskyblue")
+
   (defun toggle-fullscreen ()
-	(interactive)
-	(set-frame-parameter nil 'fullscreen
-		(if (frame-parameter nil 'fullscreen)
-		nil 'fullboth)))
+    (defun zoom-out ()
+      (interactive)
+      (text-scale-adjust -1))
+
+    (toggle-frame-maximized)
+    (global-set-key (kbd "M-RET") 'toggle-frame-maximized)
+    (global-set-key (kbd "<C-mouse-4>") 'zoom-in)
+    (global-set-key (kbd "<C-mouse-5>") 'zoom-out)
+    (global-set-key (kbd "C-+") 'zoom-in)
+
+    (interactive)
+    (set-frame-parameter nil 'fullscreen
+                         (if (frame-parameter nil 'fullscreen)
+                             nil 'fullboth)))
+
   (defun zoom-in ()
-	(interactive)
-	(text-scale-adjust +1))
+    (interactive)
+    (text-scale-adjust +1))
+
   (defun zoom-out ()
-	(interactive)
-	(text-scale-adjust -1))
+    (interactive)
+    (text-scale-adjust -1))
+
   (toggle-frame-maximized)
   (global-set-key (kbd "M-RET") 'toggle-frame-maximized)
   (global-set-key (kbd "<C-mouse-4>") 'zoom-in)
@@ -27,158 +70,97 @@
   (global-set-key (kbd "C--") 'zoom-out)
   )
 
-(add-hook 'nlinum-mode-hook
-          (lambda ()
-            (setq nlinum--width
-              (length (number-to-string
-                       (count-lines (point-min) (point-max)))))))
+;; Terminal stuffs
+(defun term-configuration()
+  )
 
-;; Compile
-(byte-recompile-directory (expand-file-name "~/.emacs.d") 0)
+(if (display-graphic-p)
+    (gui-configuration)
+  (term-configuration)
+  )
 
-;; Require
+;; Packages
 (require 'package)
-(require 'whitespace)
-(require 'cl) ; for line-comment-banner
-(require 'pos-tip)
-(require 'ido)
-;(require 'multiple-cursors)
-(global-hl-line-mode 1)
+(add-to-list 'package-archives '("melpa" . "https://melpa.org/packages/"))
+(add-to-list 'package-archives '("gnu" . "https://elpa.gnu.org/packages/"))
+(package-initialize)
 
-(setq-default cursor-type 'bar)
-(custom-set-variables
- ;; custom-set-variables was added by Custom.
- ;; If you edit it by hand, you could mess it up, so be careful.
- ;; Your init file should contain only one such instance.
- ;; If there is more than one, they won't work right.
- '(battery-mode-line-format " [%b%p%%]")
- '(column-number-mode t)
- '(delete-selection-mode 1)
- '(desktop-save t)
- '(desktop-save-mode t)
- '(display-battery-mode t)
- '(display-time-24hr-format t)
- '(display-time-default-load-average nil)
- '(display-time-mode t)
- '(fill-column 80)
- '(flymake-gui-warnings-enabled nil)
- '(flymake-no-changes-timeout 0.75)
- '(flymake-start-syntax-check-on-newline nil)
- '(global-linum-mode t)
- '(global-whitespace-mode t)
- ;; '(indent-tabs-mode t)
- '(inhibit-startup-screen t)
- '(make-pointer-invisible t)
- '(menu-bar-mode nil)
- '(scroll-bar-mode nil)
- '(show-paren-mode t)
- '(tabbar-mode t nil (tabbar))
- '(tool-bar-mode nil)
- '(transient-mark-mode 1)
- '(whitespace-line-column 80))
+;; Linum-mode
+(setq linum-format "%d ")
+(global-linum-mode 1)
 
-;; Autoload
-(autoload 'line-comment-banner "line-comment-banner" nil t)
-(autoload 'jedi:setup "jedi" nil t)
+;; highligth current line
+(global-hl-line-mode +1)
+(setq-default fill-column 80)
 
-;; Undo-tree-mode
-;;(global-undo-tree-mode)
-
-;; pos-tip
-(setq ac-quick-help-prefer-x t)
-
-;; fci-mode
+;; Fill Column Indicator
+(require 'fill-column-indicator)
 (add-hook 'after-change-major-mode-hook 'fci-mode) ; use fci for every file
 (setq fci-rule-width 1)
-(setq fci-rule-color "orange")
+(setq fci-rule-color "darkorange4")
 
-;; Jedi
-(setq jedi:get-in-function-call-delay 250)
-(setq jedi:tooltip-method '(pos-tip))
-(setq jedi:complete-on-dot t)
-(setq jedi:setup-keys t)
+;; Mode-line configuration
+(display-battery-mode 1)
 
-;; ido
-(ido-mode t)
-
-;; Tabbar
-(setq tabbar-buffer-list-function
-	  (lambda ()
-		(remove-if
-		 (lambda(buffer)
-		   (find (aref (buffer-name buffer) 0) " *"))
-		 (buffer-list))))
-
-(setq tabbar-buffer-groups-function
-	  (lambda ()
-		(list "All")))
-(defadvice tabbar-buffer-tab-label
-	(after fixup_tab_label_space_and_flag activate)
-  (setq ad-return-value
-		(if (and (buffer-modified-p (tabbar-tab-value tab))
-				 (buffer-file-name (tabbar-tab-value tab)))
-			(concat "+ " (concat ad-return-value ""))
-		  (concat " " (concat ad-return-value " ")))))
-
-;; Called each time the modification state of the buffer changed.
-(defun ztl-modification-state-change ()
-  (tabbar-set-template tabbar-current-tabset nil)
-  (tabbar-display-update))
-
-;; First-change-hook is called BEFORE the change is made.
-(defun ztl-on-buffer-modification ()
-  (set-buffer-modified-p t)
-  (ztl-modification-state-change))
-(add-hook 'after-save-hook 'ztl-modification-state-change)
-
-;; This doesn't work for revert, I don't know.
-(add-hook 'after-revert-hook 'ztl-modification-state-change)
-(add-hook 'first-change-hook 'ztl-on-buffer-modification)
-
-;; Hook
-(add-hook 'after-save-hook 'ztl-modification-state-change)
-(add-hook 'after-revert-hook 'ztl-modification-state-change)
-(add-hook 'first-change-hook 'ztl-on-buffer-modification)
-
-; Prog-mode
+;; Rainbow delimiters
+(require 'rainbow-delimiters)
 (add-hook 'prog-mode-hook 'rainbow-delimiters-mode)
 
-; Python hook
-(add-hook 'python-mode-hook 'jedi:setup)
-(add-hook 'python-mode-hook 'auto-complete-mode)
-(add-hook 'python-mode-hook 'jedi:ac-setup)
-(add-hook 'python-mode-hook
-		  (lambda ()
-			(setq indent-tabs-mode t)
-			(setq tab-width 4)
-			(setq python-indent 4)))
+;; Undo tree mode
+(global-undo-tree-mode)
 
-; C-mode hook
-(add-hook 'c-mode-common-hook 'rainbow-delimiters-mode)
-(add-hook 'c-mode-common-hook
-			 (lambda () (make-local-variable 'comment-fill)
-               (setq comment-fill "*")))
-(add-hook 'c-mode-common-hook
-		  '(lambda ()
-			 (add-to-list 'ac-omni-completion-sources
-						  (cons "\\." '(ac-source-semantic)))
-			 (add-to-list 'ac-omni-completion-sources
-						  (cons "->" '(ac-source-semantic)))
-			 (setq ac-sources '(ac-source-semantic ac-source-yasnippet))
-			 ))
+;; Whitespace mode
+(global-whitespace-mode nil) ;; activate
+
+;; Tabbar
+										; Show all normal files in one group
+(defun my-tabbar-buffer-groups ()
+  "Returns the name of the tab group names the current buffer belongs to.
+ There are two groups: Emacs buffers (those whose name starts with '*', plus
+ dired buffers), and the rest.  This works at least with Emacs v24.2 using
+ tabbar.el v1.7."
+  (list (cond ((string-equal "*" (substring (buffer-name) 0 1)) "emacs")
+			  ((eq major-mode 'dired-mode) "emacs")
+			  (t "user"))))
+(setq tabbar-buffer-groups-function 'my-tabbar-buffer-groups)
+
+;; Rainbow indentifier
+(add-hook 'prog-mode-hook 'rainbow-identifiers-mode)
+
+;; C mode
+(setq-default c-basic-offset 4
+			  tab-width 4
+			  indent-tabs-mode t)
+(setq c-default-style "java")
+
+;; Smart tabs
+(smart-tabs-insinuate 'c 'python)
+
+;; ido mode
+(require 'ido)
+(ido-mode t)
+
+
+;; Irony mode
+
+;; Markdown mode
+;(use-package markdown-mode
+;  :ensure t
+;  :commands (markdown-mode gfm-mode)
+;  :mode (("README\\.md\\'" . gfm-mode)
+;         ("\\.md\\'" . markdown-mode)
+;         ("\\.markdown\\'" . markdown-mode))
+;  :init (setq markdown-command "multimarkdown"))
 
 (custom-set-faces
  ;; custom-set-faces was added by Custom.
  ;; If you edit it by hand, you could mess it up, so be careful.
  ;; Your init file should contain only one such instance.
  ;; If there is more than one, they won't work right.
- '(default ((t (:inherit nil :stipple nil :background "#242424" :foreground "#f6f3e8" :inverse-video nil :box nil :strike-through nil :overline nil :underline nil :slant normal :weight normal :height 128 :width normal :foundry "bold" :family "Inconsolata"))))
- '(cursor ((t (:background "dark orange"))))
- '(flymake-errline ((t (:inherit nil :underline (:color "red" :style wave)))))
- '(hl-line ((t (:background "gray15"))))
- '(linum ((t (:inherit (default shadow default)))))
- '(minibuffer-prompt ((t (:foreground "DarkGoldenrod2" :weight bold))))
- '(mode-line ((t (:foreground "orange"))))
+ '(hl-line ((t (:background "gray19"))))
+ '(linum ((t (:inherit (default shadow default) :foreground "gray40"))))
+ '(minimap-active-region-background ((t (:background "gray17"))))
+ '(mode-line ((t (:background "#444444" :foreground "orange"))))
  '(rainbow-delimiters-depth-1-face ((t (:foreground "cyan"))))
  '(rainbow-delimiters-depth-2-face ((t (:foreground "magenta"))))
  '(rainbow-delimiters-depth-3-face ((t (:foreground "blue"))))
@@ -189,37 +171,27 @@
  '(rainbow-delimiters-depth-8-face ((t (:foreground "blue" :weight bold))))
  '(rainbow-delimiters-depth-9-face ((t (:foreground "yellow" :weight bold))))
  '(rainbow-delimiters-unmatched-face ((t (:foreground "red" :weight bold))))
- '(scroll-bar ((t nil)))
  '(tabbar-button ((t (:inherit tabbar-default :foreground "black"))))
  '(tabbar-default ((t (:inherit variable-pitch :background "gray14" :foreground "dark gray" :height 0.8))))
  '(tabbar-highlight ((t nil)))
  '(tabbar-modified ((t (:inherit tabbar-default :foreground "dark magenta" :box nil :weight semi-bold))))
  '(tabbar-selected ((t (:inherit tabbar-default :foreground "orange red" :weight bold))))
+ '(tabbar-selected-modified ((t (:inherit tabbar-selected))))
  '(tabbar-separator ((t (:inherit tabbar-default :background "gray14" :height 0.2))))
  '(tabbar-unselected ((t (:inherit tabbar-default :foreground "dark magenta" :weight semi-bold))))
  '(whitespace-empty ((t nil)))
  '(whitespace-hspace ((t (:foreground "DarkOrange4"))))
- '(whitespace-indentation ((t (:foreground "gray50"))))
+ '(whitespace-indentation ((t (:foreground "gray25"))))
  '(whitespace-line ((t (:underline (:color "DarkOrange4" :style wave)))))
  '(whitespace-newline ((t (:foreground "gray25"))))
- '(whitespace-space ((t (:foreground "DarkOrange4"))))
- '(whitespace-space-after-tab ((t (:background "gray14" :foreground "DarkOrange4"))))
- '(whitespace-space-before-tab ((t (:background "gray17" :foreground "DarkOrange4"))))
- '(whitespace-tab ((t (:foreground "DarkOrange4"))))
+ '(whitespace-space ((t (:foreground "gray25"))))
+ '(whitespace-space-after-tab ((t (:foreground "DarkOrange4"))))
+ '(whitespace-space-before-tab ((t (:background "DarkOrange4" :foreground "DarkOrange4"))))
+ '(whitespace-tab ((t (:foreground "gray25"))))
  '(whitespace-trailing ((t (:foreground "DarkOrange4")))))
 
-;; System configuration
-(fset 'yes-or-no-p 'y-or-n-p)
-(prefer-coding-system 'utf-8)
-(setq-default indent-tabs-mode nil)
-(setq default-tab-width 4)
-
-;; Repository
-(add-to-list 'package-archives '("melpa" . "http://melpa.milkbox.net/packages/") t)
-(add-to-list 'package-archives '("marmalade" . "http://marmalade.repos.org/packages/") t)
-
-;; Function
-; Delete trailling whitespace and save
+;; Usefull functions
+										; Delete trailling whitespace and save
 (defun delete-trailing-whitespace-and-save ()
   (interactive)
   (delete-trailing-whitespace)
@@ -238,27 +210,10 @@
   (forward-line 1)
   (transpose-lines 1)
   (forward-line -1)
-  (indent-according-to-mode))
-
-
-(global-set-key (kbd "DEL") 'backward-delete-char)
-(setq c-backspace-function 'backward-delete-char)
-
-;; Mode config
-; Python mode
-
-;; C -mode
-(setq-default c-basic-offset 4
-tab-width 4
-indent-tabs-mode t)
-;; line comment banner for C mode
-(add-hook 'c-mode-common-hook
-             (lambda () (make-local-variable 'comment-fill)
-                        (setq comment-fill "*")))
+(indent-according-to-mode))
 
 ;; Shortcut
 (global-set-key (kbd "C-x C-s") 'delete-trailing-whitespace-and-save)
-(global-set-key (kbd "C-c C-l") 'line-comment-banner)
 (global-set-key (kbd "M-s M-t") 'term)
 (global-set-key [f5] 'tabbar-backward-tab)
 (global-set-key [f6] 'tabbar-forward-tab)
@@ -274,9 +229,6 @@ indent-tabs-mode t)
 (global-set-key (kbd "M-s t") 'shell)
 (global-set-key (kbd "M-s d") 'desktop-clear)
 (global-set-key (kbd "M-s c") 'comment-dwim)
-(add-hook 'server-switch-hook
-		  (lambda ()
-			(local-set-key [S-f4] 'exit-buffer)))
 (global-set-key (kbd "M-s l") 'line-comment-banner)
 (global-set-key (kbd "M-s b") 'comment-box)
 (global-set-key (kbd "M-s j") 'downcase-region)
@@ -290,8 +242,70 @@ indent-tabs-mode t)
 (global-set-key (kbd "C->") 'mc/mark-next-like-this)
 (global-set-key (kbd "C-<") 'mc/mark-previous-like-this)
 (global-set-key (kbd "C-c C-<") 'mc/mark-all-like-this)
+(global-set-key [f5] 'tabbar-backward-tab)
+(global-set-key [f6] 'tabbar-forward-tab)
 (put 'upcase-region 'disabled nil)
 (put 'downcase-region 'disabled nil)
 
-(setq-default tab-width 4) ; or any other preferred value
-;; ;; Smart tabs
+
+;; =============
+;; irony-mode
+;; =============
+(add-hook 'c++-mode-hook 'irony-mode)
+(add-hook 'c-mode-hook 'irony-mode)
+;; =============
+;; company mode
+;; =============
+(add-hook 'c++-mode-hook 'company-mode)
+(add-hook 'c-mode-hook 'company-mode)
+;; replace the `completion-at-point' and `complete-symbol' bindings in
+;; irony-mode's buffers by irony-mode's function
+(defun my-irony-mode-hook ()
+(define-key irony-mode-map [remap completion-at-point]
+  'irony-completion-at-point-async)
+(define-key irony-mode-map [remap complete-symbol]
+  'irony-completion-at-point-async))
+(add-hook 'irony-mode-hook 'my-irony-mode-hook)
+(add-hook 'irony-mode-hook 'irony-cdb-autosetup-compile-options)
+(eval-after-load 'company
+'(add-to-list 'company-backends 'company-irony))
+;; (optional) adds CC special commands to `company-begin-commands' in order to
+;; trigger completion at interesting places, such as after scope operator
+;;     std::|
+(add-hook 'irony-mode-hook 'company-irony-setup-begin-commands)
+;; =============
+;; flycheck-mode
+;; =============
+(add-hook 'c++-mode-hook 'flycheck-mode)
+(add-hook 'c-mode-hook 'flycheck-mode)
+(eval-after-load 'flycheck
+'(add-hook 'flycheck-mode-hook #'flycheck-irony-setup))
+;; =============
+;; eldoc-mode
+;; =============
+(add-hook 'irony-mode-hook 'irony-eldoc)
+;; ==========================================
+;; (optional) bind TAB for indent-or-complete
+;; ==========================================
+(defun irony--check-expansion ()
+(save-excursion
+  (if (looking-at "\\_>") t
+    (backward-char 1)
+    (if (looking-at "\\.") t
+      (backward-char 1)
+      (if (looking-at "->") t nil)))))
+(defun irony--indent-or-complete ()
+"Indent or Complete"
+(interactive)
+(cond ((and (not (use-region-p))
+            (irony--check-expansion))
+       (message "complete")
+       (company-complete-common))
+      (t
+       (message "indent")
+       (call-interactively 'c-indent-line-or-region))))
+(defun irony-mode-keys ()
+"Modify keymaps used by `irony-mode'."
+(local-set-key (kbd "TAB") 'irony--indent-or-complete)
+(local-set-key [tab] 'irony--indent-or-complete))
+(add-hook 'c-mode-common-hook 'irony-mode-keys)
