@@ -4,8 +4,7 @@
 (setq-default indent-tabs-mode nil)
 (setq default-tab-width 4)
 (delete-selection-mode 1)
-(global-set-key (kbd "DEL") 'backward-delete-char)
-(setq c-backspace-function 'backward-delete-char)
+
 
 ;; Path
 (add-to-list 'load-path "/home/arctarus/.emacs.d/elisp")
@@ -25,7 +24,11 @@
  '(minimap-mode t)
  '(package-selected-packages
    (quote
-	(irony company-irony-c-headers flycheck-irony irony-eldoc ## company-irony company rainbow-identifiers aggressive-indent markdown-mode magit 2048-game multiple-cursors tabbar undo-tree minimap rainbow-delimiters smart-tabs-mode)))
+	(elpy py-autopep8 irony company-irony-c-headers flycheck-irony irony-eldoc ## company-irony company rainbow-identifiers aggressive-indent markdown-mode magit 2048-game multiple-cursors tabbar undo-tree minimap rainbow-delimiters smart-tabs-mode)))
+; '(python-guess-indent nil)
+; '(python-indent 4)
+; '(python-indent-guess-indent-offset nil)
+; '(python-indent-offset 4)
  '(tabbar-mode t nil (tabbar)))
 
 ;;  Graphical stuffs
@@ -83,6 +86,8 @@
 (require 'package)
 (add-to-list 'package-archives '("melpa" . "https://melpa.org/packages/"))
 (add-to-list 'package-archives '("gnu" . "https://elpa.gnu.org/packages/"))
+(add-to-list 'package-archives '("elpy" . "https://jorgenschaefer.github.io/packages/"))
+
 (package-initialize)
 (unless package-archive-contents
   (package-refresh-contents))
@@ -137,12 +142,16 @@
 (setq c-default-style "java")
 
 ;; Smart tabs
-(smart-tabs-insinuate 'c 'python)
+(smart-tabs-insinuate 'c )
 
 ;; ido mode
 (require 'ido)
 (ido-mode t)
 
+;; Python
+(elpy-enable)
+(require 'py-autopep8)
+(add-hook 'python-mode-hook 'py-autopep8-enable-on-save)
 
 ;; Irony mode
 
@@ -249,7 +258,8 @@
 (global-set-key [f6] 'tabbar-forward-tab)
 (put 'upcase-region 'disabled nil)
 (put 'downcase-region 'disabled nil)
-
+(global-set-key (kbd "DEL") 'backward-delete-char)
+(setq c-backspace-function 'backward-delete-char)
 
 ;; =============
 ;; irony-mode
