@@ -5,7 +5,6 @@
 (setq default-tab-width 4)
 (delete-selection-mode 1)
 
-
 ;; Path
 (add-to-list 'load-path "/home/arctarus/.emacs.d/elisp")
 (add-to-list 'load-path "/home/arctarus/.emacs.d/elisp/tabbar")
@@ -24,11 +23,7 @@
  '(minimap-mode t)
  '(package-selected-packages
    (quote
-	(elpy py-autopep8 irony company-irony-c-headers flycheck-irony irony-eldoc ## company-irony company rainbow-identifiers aggressive-indent markdown-mode magit 2048-game multiple-cursors tabbar undo-tree minimap rainbow-delimiters smart-tabs-mode)))
-; '(python-guess-indent nil)
-; '(python-indent 4)
-; '(python-indent-guess-indent-offset nil)
-; '(python-indent-offset 4)
+	(flycheck-pyflakes elpy py-autopep8 irony company-irony-c-headers flycheck-irony irony-eldoc ## company-irony company rainbow-identifiers aggressive-indent markdown-mode magit 2048-game multiple-cursors tabbar undo-tree minimap rainbow-delimiters smart-tabs-mode)))
  '(tabbar-mode t nil (tabbar)))
 
 ;;  Graphical stuffs
@@ -151,7 +146,9 @@
 ;; Python
 (elpy-enable)
 (require 'py-autopep8)
-(add-hook 'python-mode-hook 'py-autopep8-enable-on-save)
+(when (require 'flycheck nil t)
+  (setq elpy-modules (delq 'elpy-module-flymake elpy-modules))
+  (add-hook 'elpy-mode-hook 'flycheck-mode))
 
 ;; Irony mode
 
