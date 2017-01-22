@@ -23,7 +23,7 @@
  '(minimap-mode t)
  '(package-selected-packages
    (quote
-	(flycheck-pyflakes elpy py-autopep8 irony company-irony-c-headers flycheck-irony irony-eldoc ## company-irony company rainbow-identifiers aggressive-indent markdown-mode magit 2048-game multiple-cursors tabbar undo-tree minimap rainbow-delimiters smart-tabs-mode)))
+	(langtool flycheck-pyflakes elpy py-autopep8 irony company-irony-c-headers flycheck-irony irony-eldoc ## company-irony company rainbow-identifiers aggressive-indent markdown-mode magit 2048-game multiple-cursors tabbar undo-tree minimap rainbow-delimiters smart-tabs-mode)))
  '(tabbar-mode t nil (tabbar)))
 
 ;;  Graphical stuffs
@@ -142,6 +142,12 @@
 ;; ido mode
 (require 'ido)
 (ido-mode t)
+
+;; LanguageTool
+(require 'langtool)
+(setq langtool-language-tool-jar "~/bin/languagetool/languagetool-commandline.jar")
+(setq langtool-default-language "en-GB")
+(setq langtool-mother-tongue "fr")
 
 ;; Python
 (elpy-enable)
