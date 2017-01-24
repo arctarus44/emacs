@@ -156,6 +156,10 @@
   (setq elpy-modules (delq 'elpy-module-flymake elpy-modules))
   (add-hook 'elpy-mode-hook 'flycheck-mode))
 
+;; Highlight matching brackets.
+(show-paren-mode 1)
+(setq show-paren-style 'parenthesis)
+
 ;; Irony mode
 
 ;; Markdown mode
