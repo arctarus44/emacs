@@ -6,8 +6,8 @@
 (delete-selection-mode 1)
 
 ;; Path
-(add-to-list 'load-path "/home/arctarus/.emacs.d/elisp")
-(add-to-list 'load-path "/home/arctarus/.emacs.d/elisp/tabbar")
+(add-to-list 'load-path "~/.emacs.d/elisp")
+(add-to-list 'load-path "~/.emacs.d/elisp/tabbar")
 
 (custom-set-variables
  ;; custom-set-variables was added by Custom.
