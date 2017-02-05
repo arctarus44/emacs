@@ -23,7 +23,7 @@
  '(minimap-mode t)
  '(package-selected-packages
    (quote
-	(langtool flycheck-pyflakes elpy py-autopep8 irony company-irony-c-headers flycheck-irony irony-eldoc ## company-irony company rainbow-identifiers aggressive-indent markdown-mode magit 2048-game multiple-cursors tabbar undo-tree minimap rainbow-delimiters smart-tabs-mode)))
+	(diff-hl langtool flycheck-pyflakes elpy py-autopep8 irony company-irony-c-headers flycheck-irony irony-eldoc ## company-irony company rainbow-identifiers aggressive-indent markdown-mode magit 2048-game multiple-cursors tabbar undo-tree minimap rainbow-delimiters smart-tabs-mode)))
  '(tabbar-mode t nil (tabbar)))
 
 ;;  Graphical stuffs
@@ -178,7 +178,7 @@
  '(mode-line ((t (:background "#444444" :foreground "orange"))))
  '(rainbow-delimiters-depth-1-face ((t (:foreground "cyan"))))
  '(rainbow-delimiters-depth-2-face ((t (:foreground "magenta"))))
- '(rainbow-delimiters-depth-3-face ((t (:foreground "blue"))))
+ '(rainbow-delimiters-depth-3-face ((t (:foreground "OrangeRed2"))))
  '(rainbow-delimiters-depth-4-face ((t (:foreground "yellow"))))
  '(rainbow-delimiters-depth-5-face ((t (:foreground "green"))))
  '(rainbow-delimiters-depth-6-face ((t (:foreground "cyan" :weight bold))))
