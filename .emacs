@@ -66,16 +66,18 @@
   (global-set-key (kbd "<C-mouse-5>") 'zoom-out)
   (global-set-key (kbd "C-+") 'zoom-in)
   (global-set-key (kbd "C--") 'zoom-out)
+  (custom-set-faces
+    '(linum ((t (:inherit (default shadow default) :foreground "gray40"))))
+   )
   )
 
 ;; Terminal stuffs
 (defun term-configuration()
+  (custom-set-faces
+   '(linum ((t (:inherit (default shadow default) :foreground "yellow"))))
+   )
   )
 
-(if (display-graphic-p)
-    (gui-configuration)
-  (term-configuration)
-  )
 
 ;; Packages
 (require 'package)
@@ -177,7 +179,6 @@
  ;; Your init file should contain only one such instance.
  ;; If there is more than one, they won't work right.
  '(hl-line ((t (:background "gray19"))))
- '(linum ((t (:inherit (default shadow default) :foreground "gray40"))))
  '(minimap-active-region-background ((t (:background "gray17"))))
  '(mode-line ((t (:background "#444444" :foreground "orange"))))
  '(rainbow-delimiters-depth-1-face ((t (:foreground "cyan"))))
@@ -329,3 +330,11 @@
 (local-set-key (kbd "TAB") 'irony--indent-or-complete)
 (local-set-key [tab] 'irony--indent-or-complete))
 (add-hook 'c-mode-common-hook 'irony-mode-keys)
+
+
+
+
+(if (display-graphic-p)
+    (gui-configuration)
+  (term-configuration)
+  )
