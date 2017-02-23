@@ -28,6 +28,9 @@
 
 ;;  Graphical stuffs
 (defun gui-configuration()
+  ;; Rainbow indentifier
+  (add-hook 'prog-mode-hook 'rainbow-identifiers-mode)
+
   (load-theme 'wombat)
   (tool-bar-mode -1) ;; disable toolbar
   (menu-bar-mode -1) ;; disable menubar
@@ -128,9 +131,6 @@
 			  ((eq major-mode 'dired-mode) "emacs")
 			  (t "user"))))
 (setq tabbar-buffer-groups-function 'my-tabbar-buffer-groups)
-
-;; Rainbow indentifier
-(add-hook 'prog-mode-hook 'rainbow-identifiers-mode)
 
 ;; C mode
 (setq-default c-basic-offset 4
