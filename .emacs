@@ -16,6 +16,9 @@
  ;; If there is more than one, they won't work right.
  '(battery-mode-line-format " [%b%p%%]")
  '(column-number-mode t)
+ '(custom-safe-themes
+   (quote
+	("3c83b3676d796422704082049fc38b6966bcad960f896669dfc21a7a37a748fa" default)))
  '(display-time-24hr-format t)
  '(display-time-default-load-average nil)
  '(display-time-mode t)
@@ -23,7 +26,7 @@
  '(minimap-mode t)
  '(package-selected-packages
    (quote
-	(diff-hl langtool flycheck-pyflakes elpy py-autopep8 irony company-irony-c-headers flycheck-irony irony-eldoc ## company-irony company rainbow-identifiers aggressive-indent markdown-mode magit 2048-game multiple-cursors tabbar undo-tree minimap rainbow-delimiters smart-tabs-mode)))
+	(fireplace smart-mode-line-powerline-theme smart-mode-line diff-hl langtool flycheck-pyflakes elpy py-autopep8 irony company-irony-c-headers flycheck-irony irony-eldoc ## company-irony company rainbow-identifiers aggressive-indent markdown-mode magit 2048-game multiple-cursors tabbar undo-tree minimap rainbow-delimiters smart-tabs-mode)))
  '(tabbar-mode t nil (tabbar)))
 
 ;;  Graphical stuffs
@@ -179,6 +182,7 @@
  ;; Your init file should contain only one such instance.
  ;; If there is more than one, they won't work right.
  '(hl-line ((t (:background "gray19"))))
+ '(linum ((t (:inherit (default shadow default) :foreground "gray40"))))
  '(minimap-active-region-background ((t (:background "gray17"))))
  '(mode-line ((t (:background "#444444" :foreground "orange"))))
  '(rainbow-delimiters-depth-1-face ((t (:foreground "cyan"))))
