@@ -269,6 +269,7 @@
 (put 'downcase-region 'disabled nil)
 (global-set-key (kbd "DEL") 'backward-delete-char)
 (setq c-backspace-function 'backward-delete-char)
+(global-set-key (kbd "C-x O") 'previous-multiframe-window)
 
 ;; =============
 ;; irony-mode
