@@ -246,7 +246,8 @@
 (global-set-key [M-down] 'move-text-down)
 (global-set-key [S-f4] 'kill-this-buffer)
 (global-set-key [backtab] 'auto-complete)
-(global-set-key (kbd "M-s t") 'shell)
+(global-set-key (kbd "M-s t") 'shell
+)(global-set-key (kbd "M-s t") 'goto-line)
 (global-set-key (kbd "M-s d") 'desktop-clear)
 (global-set-key (kbd "M-s c") 'comment-dwim)
 (global-set-key (kbd "M-s l") 'line-comment-banner)
@@ -255,7 +256,7 @@
 (global-set-key (kbd "M-s u") 'upcase-region)
 (global-set-key (kbd "M-s r") 'read-only-mode)
 (global-set-key (kbd "C-d") 'kill-whole-line)
-(global-set-key (kbd "M-s g") 'goto-line)
+(global-set-key (kbd "M-g") 'goto-line)
 (global-set-key [(meta up)]  'move-line-up)
 (global-set-key [(meta down)]  'move-line-down)
 (global-set-key (kbd "C-S-c C-S-c") 'mc/edit-lines)
