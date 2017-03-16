@@ -274,6 +274,7 @@
 (global-set-key (kbd "DEL") 'backward-delete-char)
 (setq c-backspace-function 'backward-delete-char)
 (global-set-key (kbd "C-x O") 'previous-multiframe-window)
+(global-set-key [C-c r] 'revert-buffer)
 
 ;; =============
 ;; irony-mode
