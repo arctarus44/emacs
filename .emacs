@@ -4,6 +4,7 @@
 (setq-default indent-tabs-mode nil)
 (setq default-tab-width 4)
 (delete-selection-mode 1)
+(define-coding-system-alias 'UTF-8 'utf-8)
 
 ;; Path
 (add-to-list 'load-path "~/.emacs.d/elisp")
