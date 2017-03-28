@@ -6,6 +6,17 @@
 (delete-selection-mode 1)
 (define-coding-system-alias 'UTF-8 'utf-8)
 
+;; Packages
+(require 'package)
+(add-to-list 'package-archives '("melpa" . "https://melpa.org/packages/"))
+(add-to-list 'package-archives '("gnu" . "https://elpa.gnu.org/packages/"))
+(add-to-list 'package-archives '("elpy" . "https://jorgenschaefer.github.io/packages/"))
+
+(package-initialize)
+(unless package-archive-contents
+  (package-refresh-contents))
+(package-install-selected-packages)
+
 ;; Path
 (add-to-list 'load-path "~/.emacs.d/elisp")
 (add-to-list 'load-path "~/.emacs.d/elisp/tabbar")
@@ -19,7 +30,7 @@
  '(column-number-mode t)
  '(custom-safe-themes
    (quote
-	("3c83b3676d796422704082049fc38b6966bcad960f896669dfc21a7a37a748fa" default)))
+	("a27c00821ccfd5a78b01e4f35dc056706dd9ede09a8b90c6955ae6a390eb1c1e" "84d2f9eeb3f82d619ca4bfffe5f157282f4779732f48a5ac1484d94d5ff5b279" "3c83b3676d796422704082049fc38b6966bcad960f896669dfc21a7a37a748fa" default)))
  '(display-time-24hr-format t)
  '(display-time-default-load-average nil)
  '(display-time-mode t)
@@ -29,6 +40,10 @@
    (quote
 	(fireplace smart-mode-line-powerline-theme smart-mode-line diff-hl langtool flycheck-pyflakes elpy py-autopep8 irony company-irony-c-headers flycheck-irony irony-eldoc ## company-irony company rainbow-identifiers aggressive-indent markdown-mode magit 2048-game multiple-cursors tabbar undo-tree minimap rainbow-delimiters smart-tabs-mode)))
  '(tabbar-mode t nil (tabbar)))
+
+;; Smart mode line
+(setq sml/theme 'dark)
+(sml/setup)
 
 ;;  Graphical stuffs
 (defun gui-configuration()
@@ -86,16 +101,6 @@
   )
 
 
-;; Packages
-(require 'package)
-(add-to-list 'package-archives '("melpa" . "https://melpa.org/packages/"))
-(add-to-list 'package-archives '("gnu" . "https://elpa.gnu.org/packages/"))
-(add-to-list 'package-archives '("elpy" . "https://jorgenschaefer.github.io/packages/"))
-
-(package-initialize)
-(unless package-archive-contents
-  (package-refresh-contents))
-(package-install-selected-packages)
 
 ;; Linum-mode
 (setq linum-format "%d ")
@@ -161,6 +166,10 @@
 (when (require 'flycheck nil t)
   (setq elpy-modules (delq 'elpy-module-flymake elpy-modules))
   (add-hook 'elpy-mode-hook 'flycheck-mode))
+;; Fixing a key binding bug in elpy
+(define-key yas-minor-mode-map (kbd "C-c k") 'yas-expand)
+;; Fixing another key binding bug in iedit mode
+(define-key global-map (kbd "C-c o") 'iedit-mode)
 
 ;; Highlight matching brackets.
 (show-paren-mode 1)
