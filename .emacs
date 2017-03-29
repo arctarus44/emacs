@@ -34,16 +34,11 @@
  '(display-time-24hr-format t)
  '(display-time-default-load-average nil)
  '(display-time-mode t)
- '(minimap-highlight-line nil)
- '(minimap-mode t)
+
  '(package-selected-packages
    (quote
-	(fireplace smart-mode-line-powerline-theme smart-mode-line diff-hl langtool flycheck-pyflakes elpy py-autopep8 irony company-irony-c-headers flycheck-irony irony-eldoc ## company-irony company rainbow-identifiers aggressive-indent markdown-mode magit 2048-game multiple-cursors tabbar undo-tree minimap rainbow-delimiters smart-tabs-mode)))
+	(fireplace smart-mode-line-powerline-theme smart-mode-line diff-hl langtool flycheck-pyflakes elpy py-autopep8 irony company-irony-c-headers flycheck-irony irony-eldoc ## company-irony company rainbow-identifiers aggressive-indent markdown-mode magit 2048-game multiple-cursors tabbar undo-tree rainbow-delimiters smart-tabs-mode)))
  '(tabbar-mode t nil (tabbar)))
-
-;; Smart mode line
-(setq sml/theme 'dark)
-(sml/setup)
 
 ;;  Graphical stuffs
 (defun gui-configuration()
@@ -56,7 +51,7 @@
   (toggle-scroll-bar -1) ;; disable scrollbar
   (blink-cursor-mode 0)
   (setq-default cursor-type 'bar)
-  (set-cursor-color "deepskyblue")
+
 
   (defun toggle-fullscreen ()
     (defun zoom-out ()
@@ -355,3 +350,9 @@
     (gui-configuration)
   (term-configuration)
   )
+
+
+;; Smart mode line
+(setq sml/theme 'dark)
+(sml/setup)
+(set-cursor-color "deepskyblue")
