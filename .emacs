@@ -29,9 +29,10 @@
  '(display-time-24hr-format t)
  '(display-time-default-load-average nil)
  '(display-time-mode t)
+ '(electric-pair-mode 1)
  '(package-selected-packages
    (quote
-	(restclient fireplace smart-mode-line diff-hl langtool flycheck-pyflakes elpy py-autopep8 irony company-irony-c-headers flycheck-irony irony-eldoc ## company-irony company rainbow-identifiers aggressive-indent markdown-mode magit 2048-game multiple-cursors tabbar undo-tree minimap rainbow-delimiters smart-tabs-mode)))
+	(yaml-mode json-mode restclient fireplace smart-mode-line diff-hl langtool flycheck-pyflakes elpy py-autopep8 irony company-irony-c-headers flycheck-irony irony-eldoc ## company-irony company rainbow-identifiers aggressive-indent markdown-mode magit 2048-game multiple-cursors tabbar undo-tree minimap rainbow-delimiters smart-tabs-mode)))
  '(tabbar-mode t nil (tabbar)))
 
 (package-initialize)
@@ -166,6 +167,12 @@
 (define-key yas-minor-mode-map (kbd "C-c k") 'yas-expand)
 ;; Fixing another key binding bug in iedit mode
 (define-key global-map (kbd "C-c o") 'iedit-mode)
+(add-hook 'elpy-mode-hook
+    (lambda ()
+	  (local-unset-key (kbd "M-TAB"))
+	)
+)
+
 
 ;; Highlight matching brackets.
 (show-paren-mode 1)
@@ -281,6 +288,7 @@
 (setq c-backspace-function 'backward-delete-char)
 (global-set-key (kbd "C-x O") 'previous-multiframe-window)
 (global-set-key [C-c r] 'revert-buffer)
+(global-set-key (kbd "<C-tab>") 'elpy-company-backend)
 
 ;; =============
 ;; irony-mode
