@@ -148,13 +148,14 @@
     (setq exec-path (split-string path-from-shell path-separator))))
 
 (when window-system (set-exec-path-from-shell-PATH))
-(setenv "GOPATH" "/home/arthur/canopsis_projects/gonopsis")
-(add-to-list 'exec-path "/home/arthur/canopsis_projects/gonopsis/bin")
+(setenv "GOPATH" "/home/arthur/canopsis_projects/gobook/")
+(add-to-list 'exec-path "/home/arthur/canopsis_projects/gobook/bin")
 (add-hook 'before-save-hook 'gofmt-before-save)
 
 (defun auto-complete-for-go ()
-  (auto-complete-mode 1))
+(auto-complete-mode 1))
 (add-hook 'go-mode-hook 'auto-complete-for-go)
+
 (with-eval-after-load 'go-mode
    (require 'go-autocomplete))
 
