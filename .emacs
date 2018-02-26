@@ -39,14 +39,12 @@
 (unless package-archive-contents
   (package-refresh-contents))
 (package-install-selected-packages)
-
+(load-theme 'wombat)
 
 ;;  Graphical stuffs
 (defun gui-configuration()
   ;; Rainbow indentifier
   (add-hook 'prog-mode-hook 'rainbow-identifiers-mode)
-
-  (load-theme 'wombat)
   (tool-bar-mode -1) ;; disable toolbar
   (menu-bar-mode -1) ;; disable menubar
   (toggle-scroll-bar -1) ;; disable scrollbar
