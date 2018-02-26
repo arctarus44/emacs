@@ -40,13 +40,13 @@
   (package-refresh-contents))
 (package-install-selected-packages)
 
+(load-theme 'wombat)
 
 ;;  Graphical stuffs
 (defun gui-configuration()
   ;; Rainbow indentifier
   (add-hook 'prog-mode-hook 'rainbow-identifiers-mode)
 
-  (load-theme 'wombat)
   (tool-bar-mode -1) ;; disable toolbar
   (menu-bar-mode -1) ;; disable menubar
   (toggle-scroll-bar -1) ;; disable scrollbar
@@ -160,8 +160,6 @@
    (require 'go-autocomplete))
 
 (defun my-go-mode-hook ()
-  ; Use goimports instead of go-fmt
-  (setq gofmt-command "goimports")
   ; Call Gofmt before saving
   (add-hook 'before-save-hook 'gofmt-before-save)
   ; Customize compile command to run go build
