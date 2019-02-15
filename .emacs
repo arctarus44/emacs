@@ -46,7 +46,6 @@
 (defun gui-configuration()
   ;; Rainbow indentifier
   (add-hook 'prog-mode-hook 'rainbow-identifiers-mode)
-
   (tool-bar-mode -1) ;; disable toolbar
   (menu-bar-mode -1) ;; disable menubar
   (toggle-scroll-bar -1) ;; disable scrollbar
