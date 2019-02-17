@@ -32,13 +32,18 @@
  '(electric-pair-mode 1)
  '(package-selected-packages
    (quote
-	(idomenu imenu-list imenu+ go-guru exec-path-from-shell flymake-go go-autocomplete dockerfile-mode go-mode yaml-mode json-mode restclient fireplace smart-mode-line diff-hl langtool flycheck-pyflakes elpy py-autopep8 irony company-irony-c-headers flycheck-irony irony-eldoc ## company-irony company rainbow-identifiers aggressive-indent markdown-mode magit 2048-game multiple-cursors tabbar undo-tree minimap rainbow-delimiters smart-tabs-mode)))
+	(go-eldoc flymake-google-cpplint go-autocomplete go-mode go-snippets godoctor zone-nyan idomenu imenu-list imenu+ exec-path-from-shell dockerfile-mode yaml-mode json-mode restclient smart-mode-line diff-hl langtool flycheck-pyflakes elpy py-autopep8 irony company-irony-c-headers flycheck-irony irony-eldoc ## company-irony company rainbow-identifiers aggressive-indent markdown-mode multiple-cursors tabbar undo-tree rainbow-delimiters smart-tabs-mode)))
  '(tabbar-mode t nil (tabbar)))
 
 (package-initialize)
 (unless package-archive-contents
   (package-refresh-contents))
 (package-install-selected-packages)
+
+;; Import env var
+(when (memq window-system '(mac ns x))
+  (exec-path-from-shell-initialize))
+
 
 (load-theme 'wombat)
 
@@ -136,43 +141,6 @@
 			  (t "user"))))
 (setq tabbar-buffer-groups-function 'my-tabbar-buffer-groups)
 
-;; Go
-(defun set-exec-path-from-shell-PATH ()
-  (let ((path-from-shell (replace-regexp-in-string
-                          "[ \t\n]*$"
-                          ""
-                          (shell-command-to-string "$SHELL --login -i -c 'echo $PATH'"))))
-    (setenv "PATH" path-from-shell)
-    (setq eshell-path-env path-from-shell) ; for eshell users
-    (setq exec-path (split-string path-from-shell path-separator))))
-
-(when window-system (set-exec-path-from-shell-PATH))
-(setenv "GOPATH" "/home/arthur/canopsis_projects/gobook/")
-(add-to-list 'exec-path "/home/arthur/canopsis_projects/gobook/bin")
-(add-hook 'before-save-hook 'gofmt-before-save)
-
-(defun auto-complete-for-go ()
-(auto-complete-mode 1))
-(add-hook 'go-mode-hook 'auto-complete-for-go)
-
-(with-eval-after-load 'go-mode
-   (require 'go-autocomplete))
-
-(defun my-go-mode-hook ()
-  ; Call Gofmt before saving
-  (add-hook 'before-save-hook 'gofmt-before-save)
-  ; Customize compile command to run go build
-  (if (not (string-match "go" compile-command))
-      (set (make-local-variable 'compile-command)
-           "go generate && go build -v && go test -v && go vet"))
-  ; Godef jump key binding
-  (local-set-key (kbd "M-.") 'godef-jump)
-  (local-set-key (kbd "M-*") 'pop-tag-mark)
-  (setq imenu-generic-expression
-        '(("type" "^[ \t]*type *\\([^ \t\n\r\f]*[ \t]*\\(struct\\|interface\\)\\)" 1)
-          ("func" "^func *\\(.*\\)" 1)))
-)
-(add-hook 'go-mode-hook 'my-go-mode-hook)
 
 
 ;; C mode
@@ -212,6 +180,18 @@
 
 (require 'dockerfile-mode)
 (add-to-list 'auto-mode-alist '("Dockerfile\\'" . dockerfile-mode))
+
+;; Golang
+(require 'go-autocomplete)
+(require 'auto-complete-config)
+(ac-config-default)
+
+(defun my-go-mode-hook ()
+  ; Call Gofmt before saving
+  (add-hook 'before-save-hook 'gofmt-before-save)
+)
+(add-hook 'go-mode-hook 'my-go-mode-hook)
+(add-hook 'go-mode-hook 'go-eldoc-setup)
 
 
 ;; Highlight matching brackets.
@@ -328,7 +308,9 @@
 (setq c-backspace-function 'backward-delete-char)
 (global-set-key (kbd "C-x O") 'previous-multiframe-window)
 (global-set-key [C-c r] 'revert-buffer)
-(global-set-key (kbd "<C-tab>") 'elpy-company-backend)
+
+;; fix me add this inside a python hook
+;; (global-set-key (kbd "<C-tab>") 'elpy-company-backend)
 
 ;; =============
 ;; irony-mode
@@ -405,3 +387,14 @@
 (setq sml/theme 'dark)
 (sml/setup)
 (set-cursor-color "deepskyblue")
+
+
+  (defun zone-choose (pgm)
+    "Choose a PGM to run for `zone'."
+    (interactive
+     (list
+      (completing-read
+       "Program: "
+       (mapcar 'symbol-name zone-programs))))
+    (let ((zone-programs (list (intern pgm))))
+      (zone)))
