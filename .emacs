@@ -6,6 +6,8 @@
 (delete-selection-mode 1)
 (define-coding-system-alias 'UTF-8 'utf-8)
 
+(set-face-attribute 'default nil :height 110)
+
 ;; Packages
 (require 'package)
 (add-to-list 'package-archives '("melpa" . "https://melpa.org/packages/"))
@@ -53,7 +55,7 @@
   (add-hook 'prog-mode-hook 'rainbow-identifiers-mode)
   (tool-bar-mode -1) ;; disable toolbar
   (menu-bar-mode -1) ;; disable menubar
-  (toggle-scroll-bar -1) ;; disable scrollbar
+  (scroll-bar-mode -1) ;; disable scrollbar
   (blink-cursor-mode 0)
   (setq-default cursor-type 'bar)
 
