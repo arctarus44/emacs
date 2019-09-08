@@ -16,28 +16,25 @@
 
 ;; Path
 (add-to-list 'load-path "~/.emacs.d/elisp")
-(add-to-list 'load-path "~/.emacs.d/elisp/tabbar")
 
 (custom-set-variables
  ;; custom-set-variables was added by Custom.
  ;; If you edit it by hand, you could mess it up, so be careful.
  ;; Your init file should contain only one such instance.
  ;; If there is more than one, they won't work right.
- '(default-frame-alist (quote ((fullscreen . maximized))))
-
  '(battery-mode-line-format " [%b%p%%]")
  '(column-number-mode t)
  '(custom-safe-themes
    (quote
 	("a27c00821ccfd5a78b01e4f35dc056706dd9ede09a8b90c6955ae6a390eb1c1e" "84d2f9eeb3f82d619ca4bfffe5f157282f4779732f48a5ac1484d94d5ff5b279" "3c83b3676d796422704082049fc38b6966bcad960f896669dfc21a7a37a748fa" default)))
+ '(default-frame-alist (quote ((fullscreen . maximized))))
  '(display-time-24hr-format t)
  '(display-time-default-load-average nil)
  '(display-time-mode t)
  '(electric-pair-mode 1)
  '(package-selected-packages
    (quote
-	(go-eldoc flymake-google-cpplint go-autocomplete go-mode go-snippets godoctor zone-nyan idomenu imenu-list imenu+ exec-path-from-shell dockerfile-mode yaml-mode json-mode restclient smart-mode-line diff-hl langtool flycheck-pyflakes elpy py-autopep8 irony company-irony-c-headers flycheck-irony irony-eldoc ## company-irony company rainbow-identifiers aggressive-indent markdown-mode multiple-cursors tabbar undo-tree rainbow-delimiters smart-tabs-mode)))
- '(tabbar-mode t nil (tabbar)))
+	(centaur-tabs fireplace go-eldoc flymake-google-cpplint go-autocomplete go-mode go-snippets godoctor zone-nyan idomenu imenu-list imenu+ exec-path-from-shell dockerfile-mode yaml-mode json-mode restclient smart-mode-line diff-hl langtool flycheck-pyflakes elpy py-autopep8 irony company-irony-c-headers flycheck-irony irony-eldoc ## company-irony company rainbow-identifiers aggressive-indent markdown-mode multiple-cursors undo-tree rainbow-delimiters smart-tabs-mode))))
 
 (package-initialize)
 (unless package-archive-contents
@@ -85,6 +82,17 @@
    )
   )
 
+;; centaur-tabs
+(require 'centaur-tabs)
+(centaur-tabs-mode t)
+(global-set-key [f5]  'centaur-tabs-backward)
+(global-set-key [f6] 'centaur-tabs-forward)
+(setq centaur-tabs-style "bar")
+(setq centaur-tabs-set-icons t)
+(setq centaur-tabs-gray-out-icons 'buffer)
+(setq centaur-tabs-set-bar 'left)
+(setq centaur-tabs-set-modified-marker "*")
+
 
 ;; Linum-mode
 (setq linum-format "%d ")
@@ -112,20 +120,6 @@
 
 ;; Whitespace mode
 (global-whitespace-mode nil) ;; activate
-
-;; Tabbar
-										; Show all normal files in one group
-(defun my-tabbar-buffer-groups ()
-  "Returns the name of the tab group names the current buffer belongs to.
- There are two groups: Emacs buffers (those whose name starts with '*', plus
- dired buffers), and the rest.  This works at least with Emacs v24.2 using
- tabbar.el v1.7."
-  (list (cond ((string-equal "*" (substring (buffer-name) 0 1)) "emacs")
-			  ((eq major-mode 'dired-mode) "emacs")
-			  (t "user"))))
-(setq tabbar-buffer-groups-function 'my-tabbar-buffer-groups)
-
-
 
 ;; C mode
 (setq-default c-basic-offset 4
@@ -212,14 +206,6 @@
  '(rainbow-delimiters-depth-8-face ((t (:foreground "blue" :weight bold))))
  '(rainbow-delimiters-depth-9-face ((t (:foreground "yellow" :weight bold))))
  '(rainbow-delimiters-unmatched-face ((t (:foreground "red" :weight bold))))
- '(tabbar-button ((t (:inherit tabbar-default :foreground "black"))))
- '(tabbar-default ((t (:inherit variable-pitch :background "gray14" :foreground "dark gray" :height 0.8))))
- '(tabbar-highlight ((t nil)))
- '(tabbar-modified ((t (:inherit tabbar-default :foreground "dark magenta" :box nil :weight semi-bold))))
- '(tabbar-selected ((t (:inherit tabbar-default :foreground "orange red" :weight bold))))
- '(tabbar-selected-modified ((t (:inherit tabbar-selected))))
- '(tabbar-separator ((t (:inherit tabbar-default :background "gray14" :height 0.2))))
- '(tabbar-unselected ((t (:inherit tabbar-default :foreground "dark magenta" :weight semi-bold))))
  '(whitespace-empty ((t nil)))
  '(whitespace-hspace ((t (:foreground "DarkOrange4"))))
  '(whitespace-indentation ((t (:foreground "gray25"))))
@@ -256,8 +242,6 @@
 ;; Shortcut
 (global-set-key (kbd "C-x C-s") 'delete-trailing-whitespace-and-save)
 (global-set-key (kbd "M-s M-t") 'term)
-(global-set-key [f5] 'tabbar-backward-tab)
-(global-set-key [f6] 'tabbar-forward-tab)
 (global-set-key [f7] 'delete-window)
 (global-set-key [f8] 'split-window-vertically)
 (global-set-key [f9] 'split-window-horizontally)
@@ -284,8 +268,6 @@
 (global-set-key (kbd "C->") 'mc/mark-next-like-this)
 (global-set-key (kbd "C-<") 'mc/mark-previous-like-this)
 (global-set-key (kbd "C-c C-<") 'mc/mark-all-like-this)
-(global-set-key [f5] 'tabbar-backward-tab)
-(global-set-key [f6] 'tabbar-forward-tab)
 (put 'upcase-region 'disabled nil)
 (put 'downcase-region 'disabled nil)
 (global-set-key (kbd "DEL") 'backward-delete-char)
