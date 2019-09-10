@@ -134,6 +134,7 @@
 (require 'ido)
 (ido-mode t)
 
+
 ;; LanguageTool
 (require 'langtool)
 (setq langtool-language-tool-jar "~/bin/languagetool/languagetool-commandline.jar")
@@ -154,7 +155,7 @@
     (lambda ()
 	  (local-unset-key (kbd "M-TAB"))
 	)
-	)
+ 	)
 
 (require 'dockerfile-mode)
 (add-to-list 'auto-mode-alist '("Dockerfile\\'" . dockerfile-mode))
@@ -163,6 +164,7 @@
 (require 'go-autocomplete)
 (require 'auto-complete-config)
 (ac-config-default)
+(add-to-list 'ac-modes 'go-mode)
 
 (defun my-go-mode-hook ()
   ; Call Gofmt before saving
