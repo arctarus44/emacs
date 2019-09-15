@@ -156,6 +156,7 @@
 	  (local-unset-key (kbd "M-TAB"))
 	)
  	)
+(add-hook 'python-mode-hook (lambda () (auto-complete-mode -1)))
 
 (require 'dockerfile-mode)
 (add-to-list 'auto-mode-alist '("Dockerfile\\'" . dockerfile-mode))
@@ -252,9 +253,8 @@
 (global-set-key [M-up] 'move-text-up)
 (global-set-key [M-down] 'move-text-down)
 (global-set-key [S-f4] 'kill-this-buffer)
-(global-set-key [backtab] 'auto-complete)
-(global-set-key (kbd "M-s t") 'shell
-)(global-set-key (kbd "M-s t") 'goto-line)
+(global-set-key (kbd "M-s t") 'shell)
+(global-set-key (kbd "M-s t") 'goto-line)
 (global-set-key (kbd "M-s d") 'desktop-clear)
 (global-set-key (kbd "M-s c") 'comment-dwim)
 (global-set-key (kbd "M-s l") 'line-comment-banner)
