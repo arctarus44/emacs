@@ -149,14 +149,8 @@
   (add-hook 'elpy-mode-hook 'flycheck-mode))
 ;; Fixing a key binding bug in elpy
 (define-key yas-minor-mode-map (kbd "C-c k") 'yas-expand)
-;; Fixing another key binding bug in iedit mode
-(define-key global-map (kbd "C-c o") 'iedit-mode)
-(add-hook 'elpy-mode-hook
-    (lambda ()
-	  (local-unset-key (kbd "M-TAB"))
-	)
- 	)
 (add-hook 'python-mode-hook (lambda () (auto-complete-mode -1)))
+(define-key elpy-mode-map (kbd "<C-tab>") 'elpy-company-backend)
 
 (require 'dockerfile-mode)
 (add-to-list 'auto-mode-alist '("Dockerfile\\'" . dockerfile-mode))
