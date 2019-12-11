@@ -34,7 +34,7 @@
  '(electric-pair-mode 1)
  '(package-selected-packages
    (quote
-	(centaur-tabs fireplace go-eldoc flymake-google-cpplint go-autocomplete go-mode go-snippets godoctor zone-nyan idomenu imenu-list imenu+ exec-path-from-shell dockerfile-mode yaml-mode json-mode restclient smart-mode-line diff-hl langtool flycheck-pyflakes elpy py-autopep8 irony company-irony-c-headers flycheck-irony irony-eldoc ## company-irony company rainbow-identifiers aggressive-indent markdown-mode multiple-cursors undo-tree rainbow-delimiters smart-tabs-mode))))
+	(es-mode centaur-tabs fireplace go-eldoc flymake-google-cpplint go-autocomplete go-mode go-snippets godoctor zone-nyan idomenu imenu-list imenu+ exec-path-from-shell dockerfile-mode yaml-mode json-mode restclient smart-mode-line diff-hl langtool flycheck-pyflakes elpy py-autopep8 irony company-irony-c-headers flycheck-irony irony-eldoc ## company-irony company rainbow-identifiers aggressive-indent markdown-mode multiple-cursors undo-tree rainbow-delimiters smart-tabs-mode))))
 
 (package-initialize)
 (unless package-archive-contents
@@ -74,6 +74,9 @@
     '(linum ((t (:inherit (default shadow default) :foreground "gray40"))))
    )
   )
+
+;; Store Backup file in one directory
+(setq backup-directory-alist '(("." . "~/.emacs.d/backupfiles")))
 
 ;; Terminal stuffs
 (defun term-configuration()
@@ -172,6 +175,11 @@
 ;; Highlight matching brackets.
 (show-paren-mode 1)
 (setq show-paren-style 'parenthesis)
+
+;; Elasticmode
+(autoload 'es-mode "es-mode.el"
+  "Major mode for editing Elasticsearch queries" t)
+(add-to-list 'auto-mode-alist '("\\.es$" . es-mode))
 
 ;; Irony mode
 
