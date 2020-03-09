@@ -34,7 +34,7 @@
  '(electric-pair-mode 1)
  '(package-selected-packages
    (quote
-	(es-mode centaur-tabs fireplace go-eldoc flymake-google-cpplint go-autocomplete go-mode go-snippets godoctor zone-nyan idomenu imenu-list imenu+ exec-path-from-shell dockerfile-mode yaml-mode json-mode restclient smart-mode-line diff-hl langtool flycheck-pyflakes elpy py-autopep8 irony company-irony-c-headers flycheck-irony irony-eldoc ## company-irony company rainbow-identifiers aggressive-indent markdown-mode multiple-cursors undo-tree rainbow-delimiters smart-tabs-mode))))
+	(dashboard all-the-icons centaur-tabs fireplace go-eldoc flymake-google-cpplint go-autocomplete go-mode go-snippets godoctor zone-nyan idomenu imenu-list imenu+ exec-path-from-shell dockerfile-mode yaml-mode json-mode restclient smart-mode-line diff-hl langtool flycheck-pyflakes elpy py-autopep8 irony company-irony-c-headers flycheck-irony irony-eldoc ## company-irony company rainbow-identifiers aggressive-indent markdown-mode multiple-cursors undo-tree rainbow-delimiters smart-tabs-mode))))
 
 (package-initialize)
 (unless package-archive-contents
@@ -46,6 +46,12 @@
   (exec-path-from-shell-initialize))
 
 (load-theme 'wombat)
+(require 'all-the-icons)
+
+
+;; dashboard
+(require 'dashboard)
+(dashboard-setup-startup-hook)
 
 ;;  Graphical stuffs
 (defun gui-configuration()
@@ -88,12 +94,13 @@
 ;; centaur-tabs
 (require 'centaur-tabs)
 (centaur-tabs-mode t)
+(setq centaur-tabs-set-icons t)
+
+(setq centaur-tabs-set-bar 'left)
 (global-set-key [f5]  'centaur-tabs-backward)
 (global-set-key [f6] 'centaur-tabs-forward)
-(setq centaur-tabs-style "bar")
-(setq centaur-tabs-set-icons t)
+
 (setq centaur-tabs-gray-out-icons 'buffer)
-(setq centaur-tabs-set-bar 'left)
 (setq centaur-tabs-set-modified-marker "*")
 
 
