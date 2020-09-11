@@ -1,3 +1,26 @@
+(custom-set-variables
+ ;; custom-set-variables was added by Custom.
+ ;; If you edit it by hand, you could mess it up, so be careful.
+ ;; Your init file should contain only one such instance.
+ ;; If there is more than one, they won't work right.
+ '(battery-mode-line-format " [%b%p%%]")
+ '(column-number-mode t)
+ '(create-lockfiles nil)
+ '(custom-safe-themes
+   (quote
+	("a27c00821ccfd5a78b01e4f35dc056706dd9ede09a8b90c6955ae6a390eb1c1e" "84d2f9eeb3f82d619ca4bfffe5f157282f4779732f48a5ac1484d94d5ff5b279" "3c83b3676d796422704082049fc38b6966bcad960f896669dfc21a7a37a748fa" default)))
+ '(default-frame-alist (quote ((fullscreen . maximized))))
+ '(display-time-24hr-format t)
+ '(display-time-default-load-average nil)
+ '(display-time-mode t)
+ '(electric-pair-mode 1)
+ '(package-selected-packages
+   (quote
+	(neotree restclient-test vterm docker-compose-mode impatient-mode volatile-highlights projectile docker-tramp php-mode plantuml-mode typescript-mode helm which-key pyenv-mode-auto vue-mode company-tern rjsx-mode indium xref-js2 js2-refactor js2-mode dashboard all-the-icons centaur-tabs fireplace go-eldoc flymake-google-cpplint go-autocomplete go-mode go-snippets godoctor zone-nyan idomenu imenu-list imenu+ exec-path-from-shell dockerfile-mode yaml-mode json-mode restclient smart-mode-line diff-hl langtool flycheck-pyflakes elpy py-autopep8 irony company-irony-c-headers flycheck-irony irony-eldoc ## company-irony company rainbow-identifiers aggressive-indent markdown-mode multiple-cursors undo-tree rainbow-delimiters smart-tabs-mode)))
+ '(plantuml-default-exec-mode (quote jar))
+ '(plantuml-indent-level 4)
+ '(plantuml-jar-path "/home/passiflorae/bin/plantuml.jar"))
+
 ;; System configuration
 (fset 'yes-or-no-p 'y-or-n-p)
 (prefer-coding-system 'utf-8)
@@ -17,24 +40,9 @@
 ;; Path
 (add-to-list 'load-path "~/.emacs.d/elisp")
 
-(custom-set-variables
- ;; custom-set-variables was added by Custom.
- ;; If you edit it by hand, you could mess it up, so be careful.
- ;; Your init file should contain only one such instance.
- ;; If there is more than one, they won't work right.
- '(battery-mode-line-format " [%b%p%%]")
- '(column-number-mode t)
- '(custom-safe-themes
-   (quote
-	("a27c00821ccfd5a78b01e4f35dc056706dd9ede09a8b90c6955ae6a390eb1c1e" "84d2f9eeb3f82d619ca4bfffe5f157282f4779732f48a5ac1484d94d5ff5b279" "3c83b3676d796422704082049fc38b6966bcad960f896669dfc21a7a37a748fa" default)))
- '(default-frame-alist (quote ((fullscreen . maximized))))
- '(display-time-24hr-format t)
- '(display-time-default-load-average nil)
- '(display-time-mode t)
- '(electric-pair-mode 1)
- '(package-selected-packages
-   (quote
-	(dashboard all-the-icons centaur-tabs fireplace go-eldoc flymake-google-cpplint go-autocomplete go-mode go-snippets godoctor zone-nyan idomenu imenu-list imenu+ exec-path-from-shell dockerfile-mode yaml-mode json-mode restclient smart-mode-line diff-hl langtool flycheck-pyflakes elpy py-autopep8 irony company-irony-c-headers flycheck-irony irony-eldoc ## company-irony company rainbow-identifiers aggressive-indent markdown-mode multiple-cursors undo-tree rainbow-delimiters smart-tabs-mode))))
+(desktop-save-mode 1)
+
+
 
 (package-initialize)
 (unless package-archive-contents
@@ -52,6 +60,8 @@
 ;; dashboard
 (require 'dashboard)
 (dashboard-setup-startup-hook)
+  (tool-bar-mode -1) ;; disable toolbar
+  (menu-bar-mode -1) ;; disable menubar
 
 ;;  Graphical stuffs
 (defun gui-configuration()
@@ -84,6 +94,10 @@
 ;; Store Backup file in one directory
 (setq backup-directory-alist '(("." . "~/.emacs.d/backupfiles")))
 
+;; which key
+(which-key-mode)
+(which-key-setup-minibuffer)
+
 ;; Terminal stuffs
 (defun term-configuration()
   (custom-set-faces
@@ -103,6 +117,10 @@
 (setq centaur-tabs-gray-out-icons 'buffer)
 (setq centaur-tabs-set-modified-marker "*")
 
+;; projectile
+(projectile-mode +1)
+(define-key projectile-mode-map (kbd "s-p") 'projectile-command-map)
+(define-key projectile-mode-map (kbd "C-c p") 'projectile-command-map)
 
 ;; Linum-mode
 (setq linum-format "%d ")
@@ -162,6 +180,10 @@
 (add-hook 'python-mode-hook (lambda () (auto-complete-mode -1)))
 (define-key elpy-mode-map (kbd "<C-tab>") 'elpy-company-backend)
 
+;; pyenv
+(require 'pyenv-mode-auto)
+(setq exec-path (cons "/home/passiflorae/.pyenv/shims" exec-path))
+
 (require 'dockerfile-mode)
 (add-to-list 'auto-mode-alist '("Dockerfile\\'" . dockerfile-mode))
 
@@ -204,8 +226,14 @@
  ;; If you edit it by hand, you could mess it up, so be careful.
  ;; Your init file should contain only one such instance.
  ;; If there is more than one, they won't work right.
+ '(cursor ((t (:background "deep sky blue"))))
  '(hl-line ((t (:background "gray19"))))
  '(linum ((t (:inherit (default shadow default) :foreground "gray40"))))
+ '(markdown-header-face-1 ((t (:inherit markdown-header-face :height 2.0))))
+ '(markdown-header-face-2 ((t (:inherit markdown-header-face :height 1.7))))
+ '(markdown-header-face-3 ((t (:inherit markdown-header-face :height 1.4))))
+ '(markdown-header-face-4 ((t (:inherit markdown-header-face :height 1.1))))
+ '(markdown-link-face ((t (:inherit link))))
  '(minimap-active-region-background ((t (:background "gray17"))))
  '(mode-line ((t (:background "#444444" :foreground "orange"))))
  '(rainbow-delimiters-depth-1-face ((t (:foreground "cyan"))))
@@ -375,3 +403,39 @@
        (mapcar 'symbol-name zone-programs))))
     (let ((zone-programs (list (intern pgm))))
       (zone)))
+
+
+;;;;;;;;;;;;;;;;
+;; javascript ;;
+;;;;;;;;;;;;;;;;
+(require 'js2-mode)
+(require 'js2-refactor)
+(require 'xref-js2)
+(add-to-list 'auto-mode-alist '("\\.js\\'" . js2-mode))
+
+;; Better imenu
+(add-hook 'js2-mode-hook #'js2-imenu-extras-mode)
+
+
+(add-hook 'js2-mode-hook #'js2-refactor-mode)
+(js2r-add-keybindings-with-prefix "C-c C-r")
+(define-key js2-mode-map (kbd "C-k") #'js2r-kill)
+
+;; js-mode (which js2 is based on) binds "M-." which conflicts with xref, so
+;; unbind it.
+(define-key js-mode-map (kbd "M-.") nil)
+
+(add-hook 'js2-mode-hook (lambda ()
+						   (add-hook 'xref-backend-functions #'xref-js2-xref-backend nil t)))
+(add-to-list 'company-backends 'company-tern)
+
+(setq company-minimum-prefix-length 1)
+(setq js2-strict-missing-semi-warning nil)
+
+;; vuejs
+(setq mmm-js-mode-enter-hook (lambda () (setq syntax-ppss-table nil)))
+(setq mmm-typescript-mode-enter-hook (lambda () (setq syntax-ppss-table nil)))
+
+;; php
+(require 'flymake-php)
+(add-hook 'php-mode-hook 'flymake-php-load)
